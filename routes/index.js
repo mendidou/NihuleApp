@@ -28,7 +28,7 @@ router.get('/initdb', function(req, res, next) {
 router.post('/register', function(req, res, next) {
   var mail = req.body.email
   var pass = req.body.password
-   const SQL = "INSERT INTO Users(email,password) VALUES ( ,$2)"
+   const SQL = "INSERT INTO Users(email,password) VALUES ($1,$2)"
    pool.query(SQL , [mail,pass], function(dbError , dbResult) {
 
     if(dbError){
