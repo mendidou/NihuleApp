@@ -36,7 +36,7 @@ router.post('/register', function(req, res, next) {
       return
     }
     
-    res.json("body"+ req.body.mail + req.body.pass)
+    res.json("body"+ req.body.email + req.body.password)
   })
 });
 
