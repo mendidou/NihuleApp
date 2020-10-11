@@ -1,7 +1,9 @@
 const express = require('express');
-const { Pool } = require('pg');
 const app = express();
 const bcrypt = require('bcrypt')
+const { Pool } = require('pg');
+
+
 
 app.use(express.json())
 
@@ -50,6 +52,7 @@ router.post('/register', function (req, res, next) {
     res.json(dbResult)
   })
 });
+
 
 
 module.exports = router;
