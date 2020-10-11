@@ -39,4 +39,15 @@ router.post('/register', function(req, res, next){
   })
 });
 
+
+router.post('/test'), function(req ,res ,next) {
+  const one = req.body.one
+  const two = req.body.two
+  const jso = {
+    "one" : one,
+    "two" : two
+  }
+  res.json(jso)
+}
+
 module.exports = router;
