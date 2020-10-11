@@ -29,7 +29,7 @@ router.get('/', function (req, res, next) {
 /* get all users */
 router.get('/users',  function (req, res, next) {
   
-  const SQL = "SELECT * FROM Users";
+  const SQL = 'SELECT * FROM Users'
   pool.query(SQL, [], function (dbError, dbResult) {
     if (dbError) {
       res.json(dbError)
