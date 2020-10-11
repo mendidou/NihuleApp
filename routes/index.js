@@ -26,8 +26,8 @@ router.get('/initdb', function(req, res, next) {
 });
 
 router.post('/register', function(req, res, next){
-  const email = req.body.email
-  const password = req.body.password
+  const email = req.body.mail
+  const password = req.body.pass
    const SQL = "INSERT INTO Users(email,password) VALUES( $1 , $2)"
    pool.query(SQL , [email,password], function(dbError , dbResult) {
 
@@ -35,9 +35,8 @@ router.post('/register', function(req, res, next){
       res.json(dbError)
       return
     }
-    
-    res.json("body"+ req.body.email + req.body.password)
+    res.json(dbResult)
   })
-})
+});
 
 module.exports = router;
