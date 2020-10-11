@@ -22,13 +22,13 @@ const pool = new Pool({
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
-  
+
 
 });
 
 /* get all users */
-router.get('/users',  function (req, res, next) {
-  
+router.get('/users', function (req, res, next) {
+
   const SQL = 'SELECT * FROM Users'
   pool.query(SQL, [], function (dbError, dbResult) {
     if (dbError) {
@@ -42,55 +42,54 @@ router.get('/users',  function (req, res, next) {
 
 /* register a  user to the database */
 router.post('/register', async function (req, res, next) {
-  try{
+  try {
     const password = req.body.password
     const email = req.body.email
     const salt = await bcrypt.genSalt()
-    const hashedPassword = await bcrypt.hash(password ,salt)
+    const hashedPassword = await bcrypt.hash(password, salt)
     console.log(salt)
     console.log(hashedPassword)
     console.log(password)
     const SQL = 'INSERT INTO Users(email,password) VALUES( $1 , $2)'
     pool.query(SQL, [email, hashedPassword], function (dbError, dbResult) {
-  
+
       if (dbError) {
         res.json(dbError)
         return
       }
       res.json(dbResult)
     })
-  }catch{
+  } catch{
     res.status(500).send
   }
 })
 
 
-
+/* check login to the database */
 router.post('/login', async function (req, res, next) {
-  try{
+  try {
     const password = req.body.password
     const email = req.body.email
-   
+
     const SQL = `SELECT * FROM Users WHERE email = $1`
     pool.query(SQL, [email], async function (dbError, dbResult) {
-  
+
       if (dbError) {
         res.json(dbError)
         return
       }
-      
-        const iscomparable = await bcrypt.compare(password,dbResult.rows[0].password)
-        if (iscomparable){
-          res.send('sucess')
-        }else{
-          res.send('not sucess')
-        }
-    
-      
+      const iscomparable = await bcrypt.compare(password, dbResult.rows[0].password)
+      if (iscomparable) {
+        res.send('sucess')
+      } else {
+        res.send('not Allowed')
+      }
+
+
     })
-  }catch{
+  } catch{
     res.status(500).send
-  } 
+  }
 
 });
 
