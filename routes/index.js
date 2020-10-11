@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/initdb', function(req, res, next) {
-  const SQL = "CREATE TABLE Users(id SERIAL , email TEXT , password TEXT)";
+  const SQL = "SELECTE * from Users";
   pool.query(SQL , [] , function(dbError , dbResult) {
     if(dbError){
       res.json(dbError)
