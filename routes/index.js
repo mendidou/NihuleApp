@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
-const bcrypt = require('bcrypt');
 const { Pool } = require('pg');
+const bcrypt = require('bcrypt');
 
 
 
-app.use(express.json())
+app.use(express.json());
 
 var router = express.Router();
 
