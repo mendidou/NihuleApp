@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
  
 }
 catch{
-  console.error();
+  console.log("error")
 }
 const { Pool } = require('pg');
 
