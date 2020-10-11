@@ -1,7 +1,7 @@
 const express = require('express');
 const { Pool } = require('pg');
 
-const router = express.Router();
+var router = express.Router();
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -9,8 +9,10 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  
   res.render('index', { title: 'Express' });
 });
 
@@ -39,7 +41,6 @@ router.post('/register', function(req, res, next){
   })
 });
 
-
 router.post('/test', function(req ,res ,next) {
   const one = req.body.one
   const two = req.body.two
@@ -48,6 +49,5 @@ router.post('/test', function(req ,res ,next) {
     "two" : two
   }
   res.json(jso)
-})
-
+});
 module.exports = router;
