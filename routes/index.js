@@ -36,7 +36,7 @@ router.post('/register', function(req, res, next) {
       return
     }
     res.json(dbResult)
-    res.json(req.body)
+    res.json("body"+ req.body)
   })
 });
 
