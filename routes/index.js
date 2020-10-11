@@ -72,9 +72,9 @@ router.post('/login', async function (req, res, next) {
     const password = req.body.password
     const email = req.body.email
    
-    const SQL = `SELECT email,password FROM Users WHERE email = ${email}`
+    const SQL = `SELECT email,password FROM Users WHERE email = ${$1}`
     console.log(SQL)
-    pool.query(SQL, [], function (dbError, dbResult) {
+    pool.query(SQL, [email], function (dbError, dbResult) {
   
       if (dbError) {
         res.json(dbError)
