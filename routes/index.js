@@ -41,7 +41,7 @@ router.get('/users',  function (req, res, next) {
 
 
 /* register a  user to the database */
-router.post('user/register', async function (req, res, next) {
+router.post('/register', async function (req, res, next) {
   try{
     const password = req.body.password
     const email = req.body.email
@@ -67,7 +67,7 @@ router.post('user/register', async function (req, res, next) {
 
 });
 
-router.post('user/login', async function (req, res, next) {
+router.post('/login', async function (req, res, next) {
   try{
     const password = req.body.password
     const email = req.body.email
