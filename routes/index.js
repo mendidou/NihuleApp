@@ -1,5 +1,7 @@
 const express = require('express');
 const { Pool } = require('pg');
+const app = express();
+app.use(express.json())
 
 var router = express.Router();
 
@@ -45,4 +47,6 @@ router.post('/register', function (req, res, next) {
     res.json(dbResult)
   })
 });
+
+
 module.exports = router;
