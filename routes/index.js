@@ -10,30 +10,20 @@ const pool = new Pool({
   }
 });
 
-router.post('/register', function(req, res, next){
-  const email = req.body.mail
-  const password = req.body.pass
-   const SQL = "INSERT INTO Users(email,password) VALUES( $1 , $2)"
-   pool.query(SQL , [email,password], function(dbError , dbResult) {
 
-    if(dbError){
-      res.json(dbError)
-      return
-    }
-    res.json(dbResult)
-  })
-});
+
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  
+router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
+
 });
 
-router.get('/initdb', function(req, res, next) {
+/* get all users */
+router.get('/users', function (req, res, next) {
   const SQL = "SELECT * FROM Users";
-  pool.query(SQL , [] , function(dbError , dbResult) {
-    if(dbError){
+  pool.query(SQL, [], function (dbError, dbResult) {
+    if (dbError) {
       res.json(dbError)
       return
     }
@@ -41,15 +31,18 @@ router.get('/initdb', function(req, res, next) {
   })
 });
 
+/* register a  user to the database */
+router.post('/register', function (req, res, next) {
+  const email = req.body.mail
+  const password = req.body.pass
+  const SQL = "INSERT INTO Users(email,password) VALUES( $1 , $2)"
+  pool.query(SQL, [email, password], function (dbError, dbResult) {
 
-
-router.post('/test', function(req ,res ,next) {
-  const one = req.body.one
-  const two = req.body.two
-  const jso = {
-    "one" : one,
-    "two" : two
-  }
-  res.json(jso)
+    if (dbError) {
+      res.json(dbError)
+      return
+    }
+    res.json(dbResult)
+  })
 });
 module.exports = router;
