@@ -79,8 +79,7 @@ router.post('/login', async function (req, res, next) {
         return
       }
       try{
-        const userPassword = dbResult.rows[0].password
-        if(await bcrypt.compare(password,userPassword)){
+        if (bcrypt.compare(password,dbResult.rows[0].password)){
           res.send('sucess')
         }else{
           res.send('not sucess')
