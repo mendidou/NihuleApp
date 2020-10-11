@@ -26,10 +26,11 @@ router.get('/initdb', function(req, res, next) {
 });
 
 router.post('/register', function(req, res, next) {
-  const email = req.body.email
-  const password = req.body.password
+  var email = req.body.email
+  var password = req.body.password
+  print({email,password})
    const SQL = "INSERT INTO Users (email,password) VALUES ($1 ,$2)"
-   pool.query(SQL , ["mendy","password"], function(dbError , dbResult) {
+   pool.query(SQL , [email,password], function(dbError , dbResult) {
 
     if(dbError){
       res.json(dbError)
