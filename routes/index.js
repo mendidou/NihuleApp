@@ -1,6 +1,5 @@
 const express = require('express');
 const { Pool } = require('pg');
-const bcrypt = require("bcrypt")
 const app = express();
 
 app.use(express.json())
@@ -37,15 +36,11 @@ router.get('/users', function (req, res, next) {
 
 
 /* register a  user to the database */
-router.post('/register',  async function (req, res, next) {
-  try{
-    const password = req.body.password
-    const salt = await bcrypt.genSalt(password ,salt)
-    const hashedPassword = await bcrypt.hash()
-    const email = req.body.email
-  
+router.post('/register', function (req, res, next) {
+  const email = req.body.email
+  const password = req.body.password
   const SQL = "INSERT INTO Users(email,password) VALUES( $1 , $2)"
-  pool.query(SQL, [email, hashedPassword], function (dbError, dbResult) {
+  pool.query(SQL, [email, password], function (dbError, dbResult) {
 
     if (dbError) {
       res.json(dbError)
@@ -53,10 +48,6 @@ router.post('/register',  async function (req, res, next) {
     }
     res.json(dbResult)
   })
-  }catch{
-    res.status(500).send()
-  }
-  
 });
 
 
