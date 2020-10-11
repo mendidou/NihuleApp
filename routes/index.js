@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 try{
-  const { Pool } = require('pg');
+
+const bcrypt = require('bcrypt');
+ 
 }
 catch{
   console.error();
 }
-
-const bcrypt = require('bcrypt');
+const { Pool } = require('pg');
 
 
 
