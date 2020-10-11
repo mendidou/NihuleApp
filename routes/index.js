@@ -78,17 +78,14 @@ router.post('/login', async function (req, res, next) {
         res.json(dbError)
         return
       }
-      try{
+      
         const iscomparable = await bcrypt.compare(password,dbResult.rows[0].password)
         if (iscomparable){
           res.send('sucess')
         }else{
           res.send('not sucess')
         }
-      }
-      catch{
-        res.status(500).send
-      }
+    
       
     })
   }catch{
