@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-//const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs')
 const { Pool } = require('pg');
 
 
@@ -62,7 +62,9 @@ router.post('/register', async function (req, res, next) {
   }catch{
     res.status(500).send
   }
-});
+})
+
+
 
 router.post('/login', async function (req, res, next) {
   try{
@@ -78,7 +80,7 @@ router.post('/login', async function (req, res, next) {
       }
       try{
         const userPassword = dbResult.rows[0].password
-        if (await bcrypt.compare(password,userPassword)){
+        if(await bcrypt.compare(password,userPassword)){
           res.send('sucess')
         }else{
           res.send('not sucess')
@@ -94,5 +96,6 @@ router.post('/login', async function (req, res, next) {
   } 
 
 });
+
 
 module.exports = router;
