@@ -1,13 +1,6 @@
 const express = require('express');
 const app = express();
-try{
 
-const bcrypt = require('bcrypt');
- 
-}
-catch{
-  console.log("error")
-}
 const { Pool } = require('pg');
 
 
@@ -47,6 +40,7 @@ router.get('/users', function (req, res, next) {
 
 /* register a  user to the database */
 router.post('/register', function (req, res, next) {
+  
   const email = req.body.email
   const password = req.body.password
   const SQL = "INSERT INTO Users(email,password) VALUES( $1 , $2)"
