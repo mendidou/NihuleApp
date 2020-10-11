@@ -41,7 +41,7 @@ router.get('/users',  function (req, res, next) {
 
 
 /* register a  user to the database */
-router.post('/register', async function (req, res, next) {
+router.post('user/register', async function (req, res, next) {
   try{
     const password = req.body.password
     const email = req.body.email
@@ -67,6 +67,26 @@ router.post('/register', async function (req, res, next) {
 
 });
 
+router.post('user/login', async function (req, res, next) {
+  try{
+    const password = req.body.password
+    const email = req.body.email
+   
+    const SQL = "SELECT id ,email , password FROM Users WHERE email ='$1' "
+    pool.query(SQL, [email], function (dbError, dbResult) {
+  
+      if (dbError) {
+        res.json(dbError)
+        return
+      }
+      res.json(dbResult)
+    })
+  }catch{
+    res.status(500).send
+  }
+  
+  
 
+});
 
 module.exports = router;
