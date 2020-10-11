@@ -73,15 +73,24 @@ router.post('/login', async function (req, res, next) {
     const email = req.body.email
    
     const SQL = `SELECT * FROM Users WHERE email = $1`
-    console.log(SQL)
     pool.query(SQL, [email], function (dbError, dbResult) {
   
       if (dbError) {
         res.json(dbError)
         return
       }
-      const user = dbResult.rows[0]
-      console.log(user.password)
+      try{
+        const userPassword = dbResult.rows[0].password
+        if (await bcrypt.compare(password,userPassword)){
+          res.send('sucess')
+        }else{
+          res.send('not sucess')
+        }
+      }
+      catch{
+        res.status(500).send
+      }
+      
     })
   }catch{
     res.status(500).send
