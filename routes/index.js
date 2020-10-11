@@ -25,11 +25,11 @@ router.get('/initdb', function(req, res, next) {
   })
 });
 
-router.post('/register', function(req, res, next) {
-  var mail = req.body.email
-  var pass = req.body.password
-   const SQL = "INSERT INTO Users(email,password) VALUES ($1,$2)"
-   pool.query(SQL , [mail,pass], function(dbError , dbResult) {
+router.post('/register', function(req, res, next){
+  const email = req.body.email
+  const password = req.body.password
+   const SQL = "INSERT INTO Users(email,password) VALUES ("+email+","+password+")"
+   pool.query(SQL , [email,password], function(dbError , dbResult) {
 
     if(dbError){
       res.json(dbError)
@@ -38,6 +38,6 @@ router.post('/register', function(req, res, next) {
     
     res.json("body"+ req.body.email + req.body.password)
   })
-});
+})
 
 module.exports = router;
