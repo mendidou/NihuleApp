@@ -43,9 +43,6 @@ router.post('/register',  async function (req, res, next) {
     const salt = await bcrypt.genSalt(password ,salt)
     const hashedPassword = await bcrypt.hash()
     const email = req.body.email
-    console.log(hashedPassword)
-    console.log(password)
-    console.log(salt)
   
   const SQL = "INSERT INTO Users(email,password) VALUES( $1 , $2)"
   pool.query(SQL, [email, hashedPassword], function (dbError, dbResult) {
