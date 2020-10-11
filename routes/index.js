@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const bcrypt = require('bcryptjs')
+//const bcrypt = require('bcryptjs')
 const { Pool } = require('pg');
 
 
@@ -50,7 +50,7 @@ router.post('/register', async function (req, res, next) {
     console.log(salt)
     console.log(hashedPassword)
     console.log(password)
-    const SQL = "INSERT INTO Users(email,password) VALUES( $1 , $2)"
+    const SQL = 'INSERT INTO Users(email,password) VALUES( $1 , $2)'
     pool.query(SQL, [email, hashedPassword], function (dbError, dbResult) {
   
       if (dbError) {
@@ -62,9 +62,6 @@ router.post('/register', async function (req, res, next) {
   }catch{
     res.status(500).send
   }
-  
-  
-
 });
 
 router.post('/login', async function (req, res, next) {
