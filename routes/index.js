@@ -86,7 +86,7 @@ router.post('/login', async function (req, res, next) {
       }
       const iscomparable = await bcrypt.compare(password, dbResult.rows[0].password)
       if (iscomparable) {
-        const accessToken = jwt.sign(user, "ede64331940b4b9130674702c5317b8fe4839f8cf768a3f54ef5f99588cd5e98af6f5ed2854535d6c8e9cb40b3b87e15a181672625ff2cc8eb3c665d5b856200")
+        const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
         res.json({ accessToken: accessToken })
       } else {
         res.send('not Allowed')
@@ -103,10 +103,10 @@ router.post('/login', async function (req, res, next) {
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization']
   const token = authHeader && authHeader.split(' ')[1]
-  if (token == null) return res.sendtatus(401)
+  if (token == null) return res.sendStatus(401)
 
-  jwt.verify(token, "environement.ede64331940b4b9130674702c5317b8fe4839f8cf768a3f54ef5f99588cd5e98af6f5ed2854535d6c8e9cb40b3b87e15a181672625ff2cc8eb3c665d5b856200", (err, user) => {
-    if (err) return res.sendtatus(403)
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403)
     req.user = user
     next()
   })
