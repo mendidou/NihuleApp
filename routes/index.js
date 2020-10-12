@@ -1,14 +1,18 @@
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 const { Pool } = require('pg');
-
-
-
-app.use(express.json());
 
 var router = express.Router();
 
+/* let our app use json */
+app.use(express.json());
+
+
+
+/*connect to the dataBase */
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -27,10 +31,10 @@ router.get('/', function (req, res, next) {
 });
 
 /* get all users */
-router.get('/users', function (req, res, next) {
+router.get('/users',authenticateToken, function (req, res, next) {
 
-  const SQL = 'SELECT * FROM Users'
-  pool.query(SQL, [], function (dbError, dbResult) {
+  const SQL = `SELECT * FROM Users WHERE email = $1`
+  pool.query(SQL, [user.email], function (dbError, dbResult) {
     if (dbError) {
       res.json(dbError)
       return
@@ -67,10 +71,11 @@ router.post('/register', async function (req, res, next) {
 
 /* check login to the database */
 router.post('/login', async function (req, res, next) {
-  try {
-    const password = req.body.password
-    const email = req.body.email
+  const password = req.body.password
+  const email = req.body.email
+  const user = { email: email }
 
+  try {
     const SQL = `SELECT * FROM Users WHERE email = $1`
     pool.query(SQL, [email], async function (dbError, dbResult) {
 
@@ -90,8 +95,23 @@ router.post('/login', async function (req, res, next) {
   } catch{
     res.status(500).send
   }
+  const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+  res.json({ accessToken: accessToken })
 
 });
 
+
+
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization']
+  const token = authHeader && authHeader.split(' ')[1]
+  if (token == null) return res.senStatus(401)
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    if (err) return res.senStatus(403)
+    req.user = user
+    next()
+  })
+}
 
 module.exports = router;
