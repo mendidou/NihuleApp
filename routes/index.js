@@ -1,9 +1,10 @@
-require('dotenv').config()
+
 const express = require('express');
 const app = express();
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { Pool } = require('pg');
+require('dotenv').config()
 
 var router = express.Router();
 
@@ -85,13 +86,11 @@ router.post('/login', async function (req, res, next) {
       }
       const iscomparable = await bcrypt.compare(password, dbResult.rows[0].password)
       if (iscomparable) {
-        const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
-       res.json({ accessToken: accessToken })
+        //const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+        //res.json({ accessToken: accessToken })
       } else {
         res.send('not Allowed')
       }
-
-
     })
   } catch{
     res.status(500).send
