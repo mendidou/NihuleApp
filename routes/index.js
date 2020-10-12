@@ -1,10 +1,10 @@
-
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { Pool } = require('pg');
-require('dotenv').config()
+
 
 var router = express.Router();
 
