@@ -35,7 +35,7 @@ router.get('/', function (req, res, next) {
 router.get('/users',authenticateToken, function (req, res, next) {
 
   const SQL = `SELECT * FROM Users WHERE email = $1`
-  pool.query(SQL, [user.email], function (dbError, dbResult) {
+  pool.query(SQL, [req.user.email], function (dbError, dbResult) {
     if (dbError) {
       res.json(dbError)
       return
