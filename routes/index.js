@@ -85,7 +85,8 @@ router.post('/login', async function (req, res, next) {
       }
       const iscomparable = await bcrypt.compare(password, dbResult.rows[0].password)
       if (iscomparable) {
-        res.send('sucess')
+        const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+       res.json({ accessToken: accessToken })
       } else {
         res.send('not Allowed')
       }
@@ -95,9 +96,7 @@ router.post('/login', async function (req, res, next) {
   } catch{
     res.status(500).send
   }
-  const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
-  res.json({ accessToken: accessToken })
-
+ 
 });
 
 
