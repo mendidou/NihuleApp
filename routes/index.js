@@ -100,7 +100,7 @@ router.post('/login', async function (req, res, next) {
  
 });
  
-router.post('/token', (req,res)=> {
+router.post('/token', function(req,res,next) {
   const refreshToken = req.body.token
   if(refreshToken ==null)return res.sendStatus(401)
   if(!refreshTokens.includes(refreshToken))return res.sendStatus(403)
