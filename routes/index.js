@@ -21,7 +21,7 @@ const pool = new Pool({
   }
 });
 
-
+let refreshTokens = []
 
 
 /* GET home page. */
@@ -86,8 +86,10 @@ router.post('/login', async function (req, res, next) {
       }
       const iscomparable = await bcrypt.compare(password, dbResult.rows[0].password)
       if (iscomparable) {
-        const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
-        res.json({ accessToken: accessToken })
+        const accessToken = generateAccessToken(user)
+        const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET)
+        refreshTokens.push(refreshToken)
+        res.json({ accessToken: accessToken ,refreshToken:refreshToken })
       } else {
         res.send('not Allowed')
       }
@@ -97,7 +99,17 @@ router.post('/login', async function (req, res, next) {
   }
  
 });
-
+ 
+router.post('/token', (req,res)=> {
+  const refreshToken = req.body.token
+  if(refreshToken ==null)return res.sendStatus(401)
+  if(!refreshTokens.includes(refreshToken))return res.sendStatus(403)
+  jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET , (err, user)=>{
+    if(err)return res.sendStatus(403)
+    const accesToken = generateAccessToken({email : user.email})
+    res.json({accesToken:accesToken})
+  })
+})
 
 
 function authenticateToken(req, res, next) {
@@ -111,5 +123,8 @@ function authenticateToken(req, res, next) {
     next()
   })
 }
-
+ 
+function generateAccessToken(user){
+  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET , {expiresIn:'15s'})
+}
 module.exports = router;
