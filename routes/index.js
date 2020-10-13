@@ -113,7 +113,7 @@ router.post('/token', function(req,res,next) {
 })
 
 router.delete('/logout', function(req,res,next) {
-  refreshTokens =refreshTokens.filter(token => token !== req.body.token)
+  refreshTokens = null
   res.sendStatus(204)
 })
 
