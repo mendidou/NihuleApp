@@ -70,7 +70,7 @@ router.post('/register', async function (req, res, next) {
   }
 })
 
-router.post('/show'), async function (req, res, next) {
+router.get('/show'), async function (req, res, next) {
   
     
     const SQL = 'SELECT * from Users'
