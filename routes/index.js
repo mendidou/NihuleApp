@@ -1,3 +1,4 @@
+
 require('dotenv').config({path:`routes/.env`})
 const express = require('express');
 const app = express();
@@ -5,7 +6,6 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { Pool } = require('pg');
 const { token } = require('morgan');
-//environement.ACCESS_TOKEN_SECRET ='ede64331940b4b9130674702c5317b8fe4839f8cf768a3f54ef5f99588cd5e98af6f5ed2854535d6c8e9cb40b3b87e15a181672625ff2cc8eb3c665d5b856200'
 
 var router = express.Router();
 
@@ -22,6 +22,7 @@ const pool = new Pool({
   }
 });
 
+//TODO: store the refesh token in the database
 let refreshTokens = []
 
 
@@ -32,7 +33,7 @@ router.get('/', function (req, res, next) {
 
 });
 
-/* get all users */
+/* get all users */````
 router.get('/users',authenticateToken, function (req, res, next) {
 
   const SQL = `SELECT * FROM Users WHERE email = $1`
@@ -107,7 +108,7 @@ router.post('/login', async function (req, res, next) {
 
   try {
   const password = req.body.password
-  console.log(password)
+  
   const email = req.body.email
   const user = { email: email }
     const SQL = `SELECT * FROM Users WHERE email = $1`
@@ -117,13 +118,16 @@ router.post('/login', async function (req, res, next) {
         res.json(dbError)
         return
       }
-      console.log(password)
+      
       const iscomparable = await bcrypt.compare(password, dbResult.rows[0].password)
       if (iscomparable) {
         const accessToken = generateAccessToken(user)
         const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET)
+
+       //TODO: save refesh token in the database
         refreshTokens.push(refreshToken)
         res.json({ accessToken: accessToken ,refreshToken:refreshToken })
+        //TODO:  redirect to the dashboard after loged successfull && save the access token in the cookies 
       } else {
         res.send('not Allowed')
       }
