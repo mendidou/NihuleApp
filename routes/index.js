@@ -73,7 +73,7 @@ router.post('/register', async function (req, res, next) {
 router.get('/show', async function (req, res, next) {
   
     const SQL = 'SELECT * from Users'
-    pool.query(SQL, [email, hashedPassword], function (dbError, dbResult) {
+    pool.query(SQL, [], function (dbError, dbResult) {
 
       if (dbError) {
         res.json(dbError)
