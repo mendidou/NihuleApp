@@ -9,4 +9,4 @@ Content-Type: application/json
 
 ###
 
-POST http://nihuleapi.herokuapp.com/show
+GET http://nihuleapi.herokuapp.com/show
