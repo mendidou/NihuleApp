@@ -72,7 +72,6 @@ router.post('/register', async function (req, res, next) {
 
 router.get('/show', async function (req, res, next) {
   
-    
     const SQL = 'SELECT * from Users'
     pool.query(SQL, [email, hashedPassword], function (dbError, dbResult) {
 
@@ -82,7 +81,7 @@ router.get('/show', async function (req, res, next) {
       }
       res.json(dbResult)
     })
-  } 
+  } )
 
   router.post('/deleteAll'), async function (req, res, next) {
   
