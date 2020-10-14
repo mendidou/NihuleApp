@@ -73,11 +73,11 @@ router.post('/register', async function (req, res, next) {
 
 /* check login to the database */
 router.post('/login', async function (req, res, next) {
-  const password = req.body.password
-  const email = req.body.email
   const user = { email: email }
 
   try {
+  const password = req.body.password
+  const email = req.body.email
     const SQL = `SELECT * FROM Users WHERE email = $1`
     pool.query(SQL, [email], async function (dbError, dbResult) {
 

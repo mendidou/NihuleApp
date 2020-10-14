@@ -1,1 +1,7 @@
 POST http://nihuleapi.herokuapp.com/login
+Content-Type: "application/json"
+
+{
+    "email": "menahem613@hotmail.fr",
+    "password":"1a1A1a1A"
+}
