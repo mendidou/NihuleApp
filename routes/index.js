@@ -70,6 +70,38 @@ router.post('/register', async function (req, res, next) {
   }
 })
 
+router.post('/show'), async function (req, res, next) {
+  
+    
+    const SQL = 'SELECT * from Users'
+    pool.query(SQL, [email, hashedPassword], function (dbError, dbResult) {
+
+      if (dbError) {
+        res.json(dbError)
+        return
+      }
+      res.json(dbResult)
+    })
+  } 
+
+  router.post('/deleteAll'), async function (req, res, next) {
+  
+    
+    const SQL = 'DELETE * from Users'
+    pool.query(SQL, [email, hashedPassword], function (dbError, dbResult) {
+
+      if (dbError) {
+        res.json(dbError)
+        return
+      }
+      res.json(dbResult)
+    })
+  } 
+
+
+
+
+
 
 /* check login to the database */
 router.post('/login', async function (req, res, next) {
