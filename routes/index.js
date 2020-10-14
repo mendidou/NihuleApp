@@ -76,6 +76,7 @@ router.post('/login', async function (req, res, next) {
 
   try {
   const password = req.body.password
+  console.log(password)
   const email = req.body.email
   const user = { email: email }
     const SQL = `SELECT * FROM Users WHERE email = $1`
@@ -85,6 +86,7 @@ router.post('/login', async function (req, res, next) {
         res.json(dbError)
         return
       }
+      console.log(password)
       const iscomparable = await bcrypt.compare(password, dbResult.rows[0].password)
       if (iscomparable) {
         const accessToken = generateAccessToken(user)
