@@ -140,6 +140,7 @@ router.post('/login', async function (req, res, next) {
        const SQL =`INSERT INTO Users(Refresh_Token) VALUES ($1) WHERE email = $2`
        pool.query(SQL,[refreshToken,email] ,  async function(dbError , dbResult){
          if(dbError){
+           console.log(dbError)
            res.sendStatus(403)
            return
          }
