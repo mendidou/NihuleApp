@@ -46,7 +46,7 @@ router.get('/', function (req, res, next) {
 
 });
 
-/* get all users */````
+/* get all users */
 router.get('/users',authenticateToken, function (req, res, next) {
 
   const SQL = `SELECT * FROM Users WHERE email = $1`
