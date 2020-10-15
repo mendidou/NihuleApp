@@ -138,11 +138,21 @@ router.post('/login', async function (req, res, next) {
         const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET)
 
        //TODO: save refesh token in the database
-        refreshTokens.push(refreshToken)
+       const SQL =`INSERT INTO Users(Refresh_Token) VALUES ($1) WHERE email = $2`
+       pool.query(SQL,[refreshToken,email] , function(dbError , dbResult){
+         if(dbError){
+           res.sendStatus(403)
+           return
+         }
+         console.log(dbResult)
+
+       });
+       // refreshTokens.push(refreshToken)
         res.json({ accessToken: accessToken ,refreshToken:refreshToken })
         //TODO:  redirect to the dashboard after loged successfull && save the access token in the cookies 
       } else {
-        res.send('not Allowed')
+        return
+        //redirect to login with a warning message
       }
     })
   } catch{
