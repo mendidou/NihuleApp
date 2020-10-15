@@ -24,7 +24,20 @@ const pool = new Pool({
 
 //TODO: store the refesh token in the database
 let refreshTokens = []
+router.get('/addcol', function (req, res, next) {
+  const SQL = `ALTER TABLE Users ADD Refresh_Token TEXT`
+  pool.query(SQL, [], function (dbError, dbResult) {
+    if (dbError) {
+      res.json(dbError)
+      return
+    }
+    res.json(dbResult)
+  })
 
+  res.render('index', { title: 'Express' });
+
+
+});
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
