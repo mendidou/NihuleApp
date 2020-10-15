@@ -138,16 +138,16 @@ router.post('/login', async function (req, res, next) {
 
        //TODO: save refesh token in the database
        const SQL =`INSERT INTO Users(Refresh_Token) VALUES ($1) WHERE email = $2`
-       pool.query(SQL,[refreshToken,email] , function(dbError , dbResult){
+       pool.query(SQL,[refreshToken,email] ,  async function(dbError , dbResult){
          if(dbError){
            res.sendStatus(403)
            return
          }
          console.log("hello")
-
+         res.json({ accessToken: accessToken ,refreshToken:refreshToken })
        });
        // refreshTokens.push(refreshToken)
-        res.json({ accessToken: accessToken ,refreshToken:refreshToken })
+       
         //TODO:  redirect to the dashboard after loged successfull && save the access token in the cookies 
       } else {
         return
