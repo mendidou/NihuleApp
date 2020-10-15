@@ -9,4 +9,4 @@ Content-Type: application/json
 
 ###
 
-GET http://nihuleapi.herokuapp.com/addcol
+GET http://nihuleapi.herokuapp.com/show

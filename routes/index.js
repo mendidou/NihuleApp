@@ -95,11 +95,10 @@ router.get('/show', async function (req, res, next) {
       }
       res.json(dbResult)
     })
-  } )
+  })
 
   router.post('/deleteAll'), async function (req, res, next) {
   
-    
     const SQL = 'DELETE * from Users'
     pool.query(SQL, [email, hashedPassword], function (dbError, dbResult) {
 
@@ -144,7 +143,7 @@ router.post('/login', async function (req, res, next) {
            res.sendStatus(403)
            return
          }
-         console.log(dbResult)
+         console.log("hello")
 
        });
        // refreshTokens.push(refreshToken)
