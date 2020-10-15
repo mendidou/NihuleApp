@@ -137,10 +137,11 @@ router.post('/login', async function (req, res, next) {
         const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET)
 
        //TODO: save refesh token in the database
-       const SQL =`INSERT INTO Users(Refresh_Token) VALUES ($1) WHERE email = $2`
+       const SQL =`UPDATE Users SET Refresh_Token = $1 WHERE email = $2`
        pool.query(SQL,[refreshToken,email] ,  async function(dbError , dbResult){
          if(dbError){
            console.log(dbError)
+           console.log(SQL)
            res.sendStatus(403)
            return
          }
