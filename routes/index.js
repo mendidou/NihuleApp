@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const cookieParser = require('cookie-parser')
 const { Pool } = require('pg');
 const { token } = require('morgan');
 
@@ -11,6 +12,7 @@ var router = express.Router();
 
 /* let our app use json */
 app.use(express.json());
+app.use(cookieParser())
 
 
 
@@ -181,8 +183,9 @@ router.delete('/logout', function(req,res,next) {
 
 
 function authenticateToken(req, res, next) {
-  const authHeader = req.headers['authorization']
-  const token = authHeader && authHeader.split(' ')[1]
+ // const authHeader = req.headers['authorization']
+//  const token = authHeader && authHeader.split(' ')[1]
+const token = req.cookies.access_token
   if (token == null) return res.sendStatus(401)
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
@@ -193,6 +196,6 @@ function authenticateToken(req, res, next) {
 }
  
 function generateAccessToken(user){
-  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET , {expiresIn:'15s'})
+  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET , {expiresIn:'1h'})
 }
 module.exports = router;
