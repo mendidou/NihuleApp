@@ -136,18 +136,18 @@ router.post('/login', async function (req, res, next) {
         const accessToken = generateAccessToken(user)
         const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET)
 
-       //TODO: save refesh token in the database
-       const SQL =`UPDATE Users SET Refresh_Token = $1 WHERE email = $2`
-       pool.query(SQL,[refreshToken,email] ,  async function(dbError , dbResult){
-         if(dbError){
-           console.log(dbError)
-           console.log(SQL)
-           res.sendStatus(403)
-           return
-         }
-         console.log("hello")
-         res.json({ accessToken: accessToken ,refreshToken:refreshToken })
-       });
+       //TODO: save refesh token in cookies
+       res.cookie('access_token', accessToken ,{
+        maxAge:3600,
+        httpOnly:true,
+        secure:false
+      })
+      res.cookie('refresh_token', refreshToken,{
+       maxAge:10000,
+       httpOnly:true,
+       secure:false
+      })
+      res.json({ accessToken: accessToken ,refreshToken:refreshToken })
        // refreshTokens.push(refreshToken)
        
         //TODO:  redirect to the dashboard after loged successfull && save the access token in the cookies 
