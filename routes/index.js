@@ -148,20 +148,23 @@ router.post('/login', async function (req, res, next) {
         const accessToken = generateAccessToken(user)
         const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET)
 
-        const cookie = new Cookie(req ,res ,{})
-        cookie.set('access_token',accessToken,{signed:false ,httpOnly:false,expires:3600,secure:false})
+        // const cookie = new Cookie(req ,res ,{})
+        // cookie.set('access_token',accessToken,{signed:false ,httpOnly:false,expires:3600,secure:false})
+
+        const cookie = new Cookie(req , res ,{})
+        cookie.set('test', 'hello rebek',{signed:false,secure:false,httpOnly:false})
        //TODO: save refesh token in cookies
       //  res.cookie('access_token', accessToken ,{
       //   maxAge:3600,
       //   httpOnly:false,
       //   secure:false
       // })
-       res.cookie('refresh_token', refreshToken,{
-       maxAge:10000,
-       httpOnly:false,
-       secure:false
-       })
-      console.log(req.cookies)
+      //  res.cookie('refresh_token', refreshToken,{
+      //  maxAge:10000,
+      //  httpOnly:false,
+      //  secure:false
+      //  })
+      // console.log(req.cookies)
      res.json({ accessToken: accessToken ,refreshToken:refreshToken })
        // refreshTokens.push(refreshToken)
        
