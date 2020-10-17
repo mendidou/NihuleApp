@@ -157,7 +157,7 @@ router.post('/login', async function (req, res, next) {
       })
       res.end
       console.log(req.cookies)
-    //  res.json({ accessToken: accessToken ,refreshToken:refreshToken })
+     res.json({ accessToken: accessToken ,refreshToken:refreshToken })
        // refreshTokens.push(refreshToken)
        
         //TODO:  redirect to the dashboard after loged successfull && save the access token in the cookies 
