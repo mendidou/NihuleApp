@@ -146,7 +146,7 @@ router.post('/login', async function (req, res, next) {
         maxAge:3600,
         httpOnly:false,
         secure:true
-      })
+      }).send
       // res.cookie('refresh_token', refreshToken,{
       //  maxAge:10000,
       //  httpOnly:true,
