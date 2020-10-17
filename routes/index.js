@@ -148,12 +148,14 @@ router.post('/login', async function (req, res, next) {
         const accessToken = generateAccessToken(user)
         const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET)
 
+        const cookie = new Cookie(req ,res ,{})
+        cookie.set('access_token',accessToken,{signed:false ,httpOnly:false,expires:3600,secure:false})
        //TODO: save refesh token in cookies
-       res.cookie('access_token', accessToken ,{
-        maxAge:3600,
-        httpOnly:false,
-        secure:false
-      })
+      //  res.cookie('access_token', accessToken ,{
+      //   maxAge:3600,
+      //   httpOnly:false,
+      //   secure:false
+      // })
        res.cookie('refresh_token', refreshToken,{
        maxAge:10000,
        httpOnly:false,
