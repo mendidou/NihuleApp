@@ -56,7 +56,25 @@ router.get('/', function (req, res, next) {
 });
 
 /* get all users */
-router.get('/users',authenticateToken, function (req, res, next) {
+router.get('/users', function (req, res, next) {
+
+  const getAppCookies = (req) => {
+    // We extract the raw cookies from the request headers
+    const rawCookies = req.headers.cookie.split('; ');
+    // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
+   
+    const parsedCookies = {};
+    rawCookies.forEach(rawCookie=>{
+    const parsedCookie = rawCookie.split('=');
+    // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
+     parsedCookies[parsedCookie[0]] = parsedCookie[1];
+    });
+    return parsedCookies;
+   };
+   const token = (req, res) =>  getAppCookies(req, res)['refresh_token'];
+  //const token = req.cookie
+  console.log(token[0])
+  console.log(token)
 
   const SQL = `SELECT * FROM Users WHERE email = $1`
   pool.query(SQL, [req.user.email], function (dbError, dbResult) {
@@ -200,7 +218,7 @@ const getAppCookies = (req) => {
   // We extract the raw cookies from the request headers
   const rawCookies = req.headers.cookie.split('; ');
   // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
- console.log(rawCookies)
+ 
   const parsedCookies = {};
   rawCookies.forEach(rawCookie=>{
   const parsedCookie = rawCookie.split('=');
