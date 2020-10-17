@@ -5,6 +5,7 @@ const app = express();
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
 const { Pool } = require('pg');
 const { token } = require('morgan');
 
@@ -13,6 +14,10 @@ var router = express.Router();
 /* let our app use json */
 app.use(express.json());
 app.use(cookieParser())
+app.use(cors({
+  origin:'http://nihuleapi.herokuapp.com',
+  credentials:true
+}))
 
 
 
