@@ -147,11 +147,12 @@ router.post('/login', async function (req, res, next) {
         httpOnly:false,
         secure:true
       })
-      res.cookie('refresh_token', refreshToken,{
-       maxAge:10000,
-       httpOnly:true,
-       secure:false
-      })
+      // res.cookie('refresh_token', refreshToken,{
+      //  maxAge:10000,
+      //  httpOnly:true,
+      //  secure:false
+      // }).send
+      
       console.log(req.cookies)
      res.json({ accessToken: accessToken ,refreshToken:refreshToken })
        // refreshTokens.push(refreshToken)
