@@ -149,7 +149,8 @@ router.post('/login', async function (req, res, next) {
         const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET)
 
          const cookie = new Cookie(req ,res ,{})
-        cookie.set('access_token',accessToken,{signed:false,secure:false,httpOnly:false})
+         const date = new Date()
+        cookie.set('access_token',accessToken,{signed:false,secure:false,httpOnly:false,expires:date.setHours(date.getHours +1)})
 
         // const cookie = new Cookie(req , res ,{})
         // cookie.set('test', 'hello rebek',{signed:false,secure:false,httpOnly:false})
@@ -192,16 +193,7 @@ router.post('/token', function(req,res,next) {
   })
 })
 
-router.get('/setcookie', function(req,res,next) {
-  var cookie = new Cookie(req , res ,{})
-  cookie.set('test', 'hello Mendy',{signed:false,secure:false,httpOnly:false})
-  res.json(cookie)
-})
-router.get('/getcookie', function(req,res,next) {
-  var cookie = new Cookie(req , res ,{})
-  cookie.get('test',{signed:false})
-res.json(cookie)
-})
+
 
 router.delete('/logout', function(req,res,next) {
   refreshTokens = refreshTokens.filter(token => token !==req.body.token)
@@ -211,27 +203,9 @@ router.delete('/logout', function(req,res,next) {
 
 
 function authenticateToken(req, res, next) {
-//  // const authHeader = req.headers['authorization']
-// //  const token = authHeader && authHeader.split(' ')[1]
-// const getAppCookies = (req) => {
-//   // We extract the raw cookies from the request headers
-//   const rawCookies = req.headers.cookie.split('; ');
-//   // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
+  const cookie = new Cookie(req ,res , {})
+  const token = cookie.get('access_token',{signed:false})
 
-//   const parsedCookies = {};
-//   rawCookies.forEach(rawCookie=>{
-//   const parsedCookie = rawCookie.split('=');
-//   // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
-//    parsedCookies[parsedCookie[0]] = parsedCookie[1];
-//   });
-//   return parsedCookies;
-//  };
-const cookie = new Cookie(req ,res , {})
-
- const token = cookie.get('access_token',{signed:false})
-
-//const token = req.cookie
-console.log(token)
   if (token == null) return res.sendStatus(401)
   console.log(token)
 
