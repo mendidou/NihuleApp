@@ -207,9 +207,9 @@ const getAppCookies = (req) => {
  };
  const token = (req, res) =>  getAppCookies(req, res)['access_token'];
 //const token = req.cookie
-console.log(token)
+console.log(token[0])
   if (token == null) return res.sendStatus(401)
-  console.log(token)
+  console.log(token.toString)
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) return res.sendStatus(403)
