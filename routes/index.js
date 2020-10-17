@@ -149,12 +149,12 @@ router.post('/login', async function (req, res, next) {
         maxAge:3600,
         httpOnly:false,
         secure:false
-      })
+      }).send
       res.cookie('refresh_token', refreshToken,{
        maxAge:10000,
        httpOnly:true,
        secure:false
-      })
+      }).send
       console.log(req.cookies)
       res.json({ accessToken: accessToken ,refreshToken:refreshToken })
        // refreshTokens.push(refreshToken)
@@ -194,6 +194,7 @@ function authenticateToken(req, res, next) {
  // const authHeader = req.headers['authorization']
 //  const token = authHeader && authHeader.split(' ')[1]
 const token = req.cookies.access_token
+console.log(token)
   if (token == null) return res.sendStatus(401)
   console.log(token)
 
