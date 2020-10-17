@@ -209,7 +209,7 @@ const getAppCookies = (req) => {
   });
   return parsedCookies;
  };
- const token = (req, res) =>  getAppCookies(req, res)['access_token'];
+ const token = (req, res) =>  getAppCookies(req, res)['refresh_token'];
 //const token = req.cookie
 console.log(token[0])
   if (token == null) return res.sendStatus(401)
