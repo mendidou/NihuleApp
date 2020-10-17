@@ -8,12 +8,12 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const { Pool } = require('pg');
 const { token } = require('morgan');
-
+app.use(cookieParser())
 var router = express.Router();
 
 /* let our app use json */
 app.use(express.json());
-app.use(cookieParser())
+
 // app.use(cors({
 //   origin:'http://nihuleapi.herokuapp.com/users',
 //   credentials:true
@@ -149,12 +149,12 @@ router.post('/login', async function (req, res, next) {
         maxAge:3600,
         httpOnly:false,
         secure:false
-      })
+      }).send
       res.cookie('refresh_token', refreshToken,{
        maxAge:10000,
        httpOnly:true,
        secure:false
-      })
+      }).send
       res.end
       console.log(req.cookies)
      res.json({ accessToken: accessToken ,refreshToken:refreshToken })
