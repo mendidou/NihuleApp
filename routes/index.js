@@ -14,7 +14,11 @@ var router = express.Router();
 /* let our app use json */
 app.use(express.json());
 
- app.use(cors())
+ app.use(cors({
+   origin: 'http://nihuleapi.herokuapp.com',
+   credentials:true
+  
+ }))
  app.use(cookieParser())
 
 
@@ -147,12 +151,12 @@ router.post('/login', async function (req, res, next) {
         httpOnly:false,
         secure:true
       }).send
-      res.end
-      // res.cookie('refresh_token', refreshToken,{
-      //  maxAge:10000,
-      //  httpOnly:true,
-      //  secure:false
-      // }).send
+       res.cookie('refresh_token', refreshToken,{
+       maxAge:10000,
+       httpOnly:true,
+       secure:false
+       }).send
+       res.end
       
       console.log(req.cookies)
      res.json({ accessToken: accessToken ,refreshToken:refreshToken })
