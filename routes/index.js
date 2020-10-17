@@ -16,7 +16,7 @@ var router = express.Router();
 app.use(express.json());
 
  app.use(cors({
-   origin: 'http://nihuleapi.herokuapp.com',
+   origin: 'http://nihuleapi.herokuapp.com/users',
    credentials:true
   
  }))
