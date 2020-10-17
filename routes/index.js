@@ -9,6 +9,7 @@ const cors = require('cors')
 const { Pool } = require('pg');
 const { token } = require('morgan');
 
+app.use(cookieParser())
 var router = express.Router();
 
 /* let our app use json */
@@ -19,7 +20,7 @@ app.use(express.json());
    credentials:true
   
  }))
- app.use(cookieParser())
+
 
 
 /*connect to the dataBase */
@@ -56,32 +57,13 @@ router.get('/', function (req, res, next) {
 });
 
 /* get all users */
-router.get('/users', function (req, res, next) {
-
-  const getAppCookies = (req) => {
-    // We extract the raw cookies from the request headers
-    const rawCookies = req.headers.cookie.split('; ');
-    // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
-   
-    const parsedCookies = {};
-    rawCookies.forEach(rawCookie=>{
-    const parsedCookie = rawCookie.split('=');
-    // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
-     parsedCookies[parsedCookie[0]] = parsedCookie[1];
-    });
-    return parsedCookies;
-   };
-   const token = (req, res) =>  getAppCookies(req, res)['refresh_token'];
-  //const token = req.cookie
-  console.log(token[0])
-  console.log(token)
+router.get('/users',authenticateToken, function (req, res, next) {
 
   const SQL = `SELECT * FROM Users WHERE email = $1`
   pool.query(SQL, [req.user.email], function (dbError, dbResult) {
     if (dbError) {
       res.json(dbError)
       return
-      
     }
     res.json(dbResult)
   })
@@ -174,9 +156,7 @@ router.post('/login', async function (req, res, next) {
        maxAge:10000,
        httpOnly:true,
        secure:false
-       }).send
-       res.end
-      
+       })
       console.log(req.cookies)
      res.json({ accessToken: accessToken ,refreshToken:refreshToken })
        // refreshTokens.push(refreshToken)
@@ -219,7 +199,7 @@ const getAppCookies = (req) => {
   // We extract the raw cookies from the request headers
   const rawCookies = req.headers.cookie.split('; ');
   // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
- 
+
   const parsedCookies = {};
   rawCookies.forEach(rawCookie=>{
   const parsedCookie = rawCookie.split('=');
