@@ -211,26 +211,29 @@ router.delete('/logout', function(req,res,next) {
 
 
 function authenticateToken(req, res, next) {
- // const authHeader = req.headers['authorization']
-//  const token = authHeader && authHeader.split(' ')[1]
-const getAppCookies = (req) => {
-  // We extract the raw cookies from the request headers
-  const rawCookies = req.headers.cookie.split('; ');
-  // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
+//  // const authHeader = req.headers['authorization']
+// //  const token = authHeader && authHeader.split(' ')[1]
+// const getAppCookies = (req) => {
+//   // We extract the raw cookies from the request headers
+//   const rawCookies = req.headers.cookie.split('; ');
+//   // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
 
-  const parsedCookies = {};
-  rawCookies.forEach(rawCookie=>{
-  const parsedCookie = rawCookie.split('=');
-  // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
-   parsedCookies[parsedCookie[0]] = parsedCookie[1];
-  });
-  return parsedCookies;
- };
- const token = (req, res) =>  getAppCookies(req, res)['access_token'];
+//   const parsedCookies = {};
+//   rawCookies.forEach(rawCookie=>{
+//   const parsedCookie = rawCookie.split('=');
+//   // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
+//    parsedCookies[parsedCookie[0]] = parsedCookie[1];
+//   });
+//   return parsedCookies;
+//  };
+const cookie = new Cookie(req ,res , {})
+
+ const token = cookie.get('access_token',{signed:false})
+
 //const token = req.cookie
-console.log(req.cookies)
+console.log(token)
   if (token == null) return res.sendStatus(401)
-  console.log(token.toString)
+  console.log(token)
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) return res.sendStatus(403)
