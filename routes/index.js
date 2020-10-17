@@ -154,9 +154,9 @@ router.post('/login', async function (req, res, next) {
        maxAge:10000,
        httpOnly:true,
        secure:false
-      }).send
+      }).send.
       console.log(req.cookies)
-      res.json({ accessToken: accessToken ,refreshToken:refreshToken })
+    //  res.json({ accessToken: accessToken ,refreshToken:refreshToken })
        // refreshTokens.push(refreshToken)
        
         //TODO:  redirect to the dashboard after loged successfull && save the access token in the cookies 
@@ -193,7 +193,7 @@ router.delete('/logout', function(req,res,next) {
 function authenticateToken(req, res, next) {
  // const authHeader = req.headers['authorization']
 //  const token = authHeader && authHeader.split(' ')[1]
-const token = req.cookies.access_token
+const token = req.cookie
 console.log(token)
   if (token == null) return res.sendStatus(401)
   console.log(token)
