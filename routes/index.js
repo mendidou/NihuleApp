@@ -147,7 +147,7 @@ router.post('/login', async function (req, res, next) {
        //TODO: save refesh token in cookies
        res.cookie('access_token', accessToken ,{
         maxAge:3600,
-        httpOnly:true,
+        httpOnly:false,
         secure:false
       })
       res.cookie('refresh_token', refreshToken,{
