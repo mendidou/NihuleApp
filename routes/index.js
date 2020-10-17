@@ -150,7 +150,7 @@ router.post('/login', async function (req, res, next) {
        res.cookie('access_token', accessToken ,{
         maxAge:3600,
         httpOnly:false,
-        secure:true
+        secure:false
       })
        res.cookie('refresh_token', refreshToken,{
        maxAge:10000,
@@ -210,7 +210,7 @@ const getAppCookies = (req) => {
  };
  const token = (req, res) =>  getAppCookies(req, res)['refresh_token'];
 //const token = req.cookie
-console.log(token[0])
+console.log(req.cookies)
   if (token == null) return res.sendStatus(401)
   console.log(token.toString)
 
