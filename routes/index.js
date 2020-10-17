@@ -14,10 +14,10 @@ var router = express.Router();
 /* let our app use json */
 app.use(express.json());
 app.use(cookieParser())
-app.use(cors({
-  origin:'http://nihuleapi.herokuapp.com/users',
-  credentials:true
-}))
+// app.use(cors({
+//   origin:'http://nihuleapi.herokuapp.com/users',
+//   credentials:true
+// }))
 
 
 
