@@ -8,14 +8,14 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const { Pool } = require('pg');
 const { token } = require('morgan');
-app.use(cookieParser())
+
 var router = express.Router();
 
 /* let our app use json */
 app.use(express.json());
 
  app.use(cors())
-
+ app.use(cookieParser())
 
 
 /*connect to the dataBase */
@@ -147,6 +147,7 @@ router.post('/login', async function (req, res, next) {
         httpOnly:false,
         secure:true
       }).send
+      res.end
       // res.cookie('refresh_token', refreshToken,{
       //  maxAge:10000,
       //  httpOnly:true,
