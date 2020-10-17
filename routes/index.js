@@ -81,6 +81,7 @@ router.get('/users', function (req, res, next) {
     if (dbError) {
       res.json(dbError)
       return
+      
     }
     res.json(dbResult)
   })
