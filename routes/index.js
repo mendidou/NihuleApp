@@ -14,10 +14,7 @@ var router = express.Router();
 /* let our app use json */
 app.use(express.json());
 
-// app.use(cors({
-//   origin:'http://nihuleapi.herokuapp.com/users',
-//   credentials:true
-// }))
+ app.use(cors())
 
 
 
@@ -148,14 +145,13 @@ router.post('/login', async function (req, res, next) {
        res.cookie('access_token', accessToken ,{
         maxAge:3600,
         httpOnly:false,
-        secure:false
-      }).send
+        secure:true
+      })
       res.cookie('refresh_token', refreshToken,{
        maxAge:10000,
        httpOnly:true,
        secure:false
-      }).send
-      res.end
+      })
       console.log(req.cookies)
      res.json({ accessToken: accessToken ,refreshToken:refreshToken })
        // refreshTokens.push(refreshToken)
@@ -194,7 +190,21 @@ router.delete('/logout', function(req,res,next) {
 function authenticateToken(req, res, next) {
  // const authHeader = req.headers['authorization']
 //  const token = authHeader && authHeader.split(' ')[1]
-const token = req.cookie
+const getAppCookies = (req) => {
+  // We extract the raw cookies from the request headers
+  const rawCookies = req.headers.cookie.split('; ');
+  // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
+ 
+  const parsedCookies = {};
+  rawCookies.forEach(rawCookie=>{
+  const parsedCookie = rawCookie.split('=');
+  // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
+   parsedCookies[parsedCookie[0]] = parsedCookie[1];
+  });
+  return parsedCookies;
+ };
+ const token = (req, res) =>  getAppCookies(req, res)['access_token'];
+//const token = req.cookie
 console.log(token)
   if (token == null) return res.sendStatus(401)
   console.log(token)
