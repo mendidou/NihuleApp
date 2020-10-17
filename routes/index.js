@@ -149,8 +149,8 @@ router.post('/login', async function (req, res, next) {
         const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET)
 
          const cookie = new Cookie(req ,res ,{})
-         const date = new Date()
-        cookie.set('access_token',accessToken,{signed:false,secure:false,expires:date.setHours(date.getHours +1),httpOnly:true})
+         const date = new Date().getDate
+        cookie.set('access_token',accessToken,{signed:false,secure:false,httpOnly:true, expires: date})
 
         // const cookie = new Cookie(req , res ,{})
         // cookie.set('test', 'hello rebek',{signed:false,secure:false,httpOnly:false})
