@@ -150,6 +150,7 @@ router.post('/login', async function (req, res, next) {
        httpOnly:true,
        secure:false
       })
+      console.log(req.cookies)
       res.json({ accessToken: accessToken ,refreshToken:refreshToken })
        // refreshTokens.push(refreshToken)
        
