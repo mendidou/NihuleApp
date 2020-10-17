@@ -8,6 +8,8 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const { Pool } = require('pg');
 const { token } = require('morgan');
+var http = require('http')
+const Cookie = require('cookies')
 
 app.use(cookieParser())
 var router = express.Router();
@@ -183,6 +185,17 @@ router.post('/token', function(req,res,next) {
     const accesToken = generateAccessToken({email : user.email})
     res.json({accesToken:accesToken})
   })
+})
+
+router.get('/setcookie', function(req,res,next) {
+  var cookie = new Cookie(req , res ,{})
+  cookie.set('test', 'hello Mendy',{signed:false,secure:false,httpOnly:false})
+  res.json(cookie)
+})
+router.get('/getcookie', function(req,res,next) {
+  var cookie = new Cookie(req , res ,{})
+  cookie.get('test',{signed:false})
+res.json(cookie)
 })
 
 router.delete('/logout', function(req,res,next) {
