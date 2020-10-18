@@ -1,6 +1,6 @@
 
 require('dotenv').config({path:`routes/.env`});
-const router = require('./authentification');
+const router = require('./authentificationRoutes');
 const authMethods = require('./routeMethods/authMethods');
 const { Pool } = require('pg');
 const express = require('express');
