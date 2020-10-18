@@ -7,8 +7,8 @@ const jwt = require('jsonwebtoken')
 const cors = require('cors')
 const { Pool } = require('pg');
 const { token } = require('morgan');
-const Cookie = require('cookies')
-require('index.js')
+const Cookie = require('cookies');
+const authJs = require('./authentification');
 
 var router = express.Router();
 
