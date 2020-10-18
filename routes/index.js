@@ -31,7 +31,7 @@ const pool = new Pool({
 });
 
 router.get('/error', function (req, res, next) {
-  res.render('error', { title: 'Express' });
+  res.send(Error(502));
 
 });
 router.get('/layout', function (req, res, next) {
