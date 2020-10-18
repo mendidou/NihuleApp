@@ -1,14 +1,14 @@
 
 require('dotenv').config({path:`routes/.env`})
 const express = require('express');
+const authJs = require('./authentification')
 const app = express();
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const cors = require('cors')
 const { Pool } = require('pg');
 const { token } = require('morgan');
-const Cookie = require('cookies');
-const authJs = require('./authentification');
+const Cookie = require('cookies')
 
 var router = express.Router();
 
@@ -57,4 +57,5 @@ router.get('/users',authenticateToken, function (req, res, next) {
     res.json(dbResult)
   })
 });
+
 
