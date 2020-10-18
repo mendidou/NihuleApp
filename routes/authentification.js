@@ -1,6 +1,6 @@
 require('dotenv').config({path:`routes/.env`})
-const express = require('express');
 const app = express();
+const express = require('express');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const cors = require('cors')
