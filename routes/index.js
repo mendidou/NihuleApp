@@ -135,6 +135,7 @@ function authenticateToken(req, res, next) {
     console.log(1)
     if (err) return req.user = refreshToken(req,res,next)
     req.user = user
+    console.log(req.user)
     next()
   })
 }
