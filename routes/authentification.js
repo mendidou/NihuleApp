@@ -133,7 +133,12 @@ function refreshToken (req,res,next) {
 function generateAccessToken(user){
   return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET , {expiresIn:'1h'})
 }
-module.exports = router;
+module.exports = router,{
+    authenticateToken,
+    refreshToken,
+    generateAccessToken
+};
+
 
 
 // router.post('/token', function(req,res,next) {
