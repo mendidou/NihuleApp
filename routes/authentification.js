@@ -102,7 +102,7 @@ router.delete('/logout', function(req,res,next) {
   res.sendStatus(204)
 })
 
-
+module.exports = router;
  
 
 
