@@ -31,12 +31,15 @@ const pool = new Pool({
 });
 
 
+router.get('/login', function (req, res, next) {
+  res.render('login', { title: 'Express' });
+
+});
 
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('/login.ejs', { title: 'Express' });
-
+  res.render('index', { title: 'Express' });
 
 });
 /* check login to the database */
