@@ -35,7 +35,7 @@ const pool = new Pool({
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('login', { title: 'Express' });
+  res.render('/login.ejs', { title: 'Express' });
 
 
 });
