@@ -1,13 +1,13 @@
-// require('dotenv').config({path:`routes/.env`})
-// const express = require('express');
-// const app = express();
-// const bcrypt = require('bcryptjs')
-// const jwt = require('jsonwebtoken')
-// const cors = require('cors')
-// const { Pool } = require('pg');
-// const { token } = require('morgan');
-// const Cookie = require('cookies')
-// const authMethods = require('./authMethods')
+require('dotenv').config({path:`routes/.env`})
+const express = require('express');
+const app = express();
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const cors = require('cors')
+const { Pool } = require('pg');
+const { token } = require('morgan');
+const Cookie = require('cookies')
+const authMethods = require('./authMethods')
 
 var router = express.Router();
 
