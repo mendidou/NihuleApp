@@ -45,6 +45,7 @@ router.get('/users',authMethods.data.authenticateToken, function (req, res, next
     res.json(dbResult)
   })
 });
+
 module.exports = router;
 
 
