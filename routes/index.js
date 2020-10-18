@@ -1,7 +1,7 @@
 
 require('dotenv').config({path:`routes/.env`});
 const router = require('./authentification');
-const authMethods = require('./authMethods');
+const authMethods = require('./routeMethods/authMethods');
 const { Pool } = require('pg');
 const express = require('express');
 
@@ -33,8 +33,6 @@ router.get('/', function (req, res, next) {
 
 });
 
-
-
 /* get all users */
 router.get('/users',authMethods.data.authenticateToken, function (req, res, next) {
 
@@ -49,5 +47,4 @@ router.get('/users',authMethods.data.authenticateToken, function (req, res, next
 });
 
 
-module.exports = router;
 

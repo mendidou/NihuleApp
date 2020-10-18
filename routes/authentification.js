@@ -3,10 +3,11 @@ const express = require('express');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const cors = require('cors')
+const authMethods = require('./routeMethods/authMethods')
 const { Pool } = require('pg');
 const { token } = require('morgan');
 const Cookie = require('cookies')
-const authMethods = require('./authMethods')
+
 
 const app = express();
 var router = express.Router();
