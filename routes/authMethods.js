@@ -1,5 +1,7 @@
+const jwt = require('jsonwebtoken');
+const Cookie = require('cookies');
  var  authMethods = {}
- 
+
  authMethods.authenticateToken = function (req, res, next) {
     const cookie = new Cookie(req ,res , {})
     const token = cookie.get('access_token',{signed:false})
