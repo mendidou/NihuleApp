@@ -2,7 +2,13 @@
 require('dotenv').config({path:`routes/.env`});
 const router = require('./authentification');
 const authMethods = require('./authMethods');
+const app = express();
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const cors = require('cors');
 const { Pool } = require('pg');
+const { token } = require('morgan');
+const Cookie = require('cookies');
 
 
 
