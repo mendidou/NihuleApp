@@ -4,14 +4,12 @@ const express = require('express');
 const app = express();
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const { Pool } = require('pg');
 const { token } = require('morgan');
-var http = require('http')
 const Cookie = require('cookies')
 
-app.use(cookieParser())
+
 var router = express.Router();
 
 /* let our app use json */
@@ -33,23 +31,7 @@ const pool = new Pool({
   }
 });
 
-//TODO: store the refesh token in the database
-let refreshTokens = []
-/*router.get('/addcol', function (req, res, next) {
-  const SQL = `ALTER TABLE Users ADD Refresh_Token TEXT`
-  pool.query(SQL, [], function (dbError, dbResult) {
-    if (dbError) {
-      res.json(dbError)
-      return
-    }
-    res.json(dbResult)
-  })
 
-  res.render('index', { title: 'Express' });
-
-
-});
-*/
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -150,6 +132,7 @@ function authenticateToken(req, res, next) {
   if (token == null) return //TODO: redirect to login with a small message
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    console.log(1)
     if (err) return req.user = refreshToken(req,res,next)
     req.user = user
     next()
@@ -160,9 +143,8 @@ function refreshToken (req,res,next) {
   const cookie = new Cookie(req ,res , {})
   const refreshToken = cookie.get('refresh_token',{signed:false})
   if(refreshToken ==null)return res.sendStatus(401) //TODO: redirect to login with a small message
-  if(!refreshTokens.includes(refreshToken))return res.sendStatus(403)
   jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET , (err, user)=>{
-    if(err)return //TODO: redirect to login with a small message
+    if(err)res.sendStatus(403) //TODO: redirect to login with a small message
     const accessToken = generateAccessToken({email : user})
     cookie.set('access_token',accessToken,{signed:false,secure:false,httpOnly:true})
     return user
