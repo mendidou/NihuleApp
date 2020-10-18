@@ -1,6 +1,5 @@
 
 require('dotenv').config({path:`routes/.env`});
-const express = require('express');
 const router = require('./authentification');
 const authMethods = require('./authMethods');
 const app = express();
@@ -10,6 +9,7 @@ const cors = require('cors');
 const { Pool } = require('pg');
 const { token } = require('morgan');
 const Cookie = require('cookies');
+const express = require('express');
 
 
 
