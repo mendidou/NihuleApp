@@ -1,4 +1,4 @@
-equire('dotenv').config({path:`routes/.env`})
+require('dotenv').config({path:`routes/.env`})
 const express = require('express');
 const app = express();
 const bcrypt = require('bcryptjs')
@@ -28,6 +28,7 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
+
 
 /* check login to the database */
 router.post('/login', async function (req, res, next) {
