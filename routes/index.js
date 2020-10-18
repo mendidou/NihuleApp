@@ -81,7 +81,7 @@ router.post('/login', async function (req, res, next) {
         cookie.set('access_token',accessToken,{signed:false,secure:false,httpOnly:true})
         cookie.set('refresh_token',refreshToken,{signed:false,secure:false,httpOnly:true})
       
-   //  res.json({ accessToken: accessToken ,refreshToken:refreshToken })
+    res.json({ accessToken: accessToken ,refreshToken:refreshToken })
     
        
         //TODO:  redirect to the dashboard after loged successfull && save the access token in the cookies 
