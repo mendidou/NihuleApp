@@ -9,7 +9,6 @@ const { Pool } = require('pg');
 const { token } = require('morgan');
 const Cookie = require('cookies')
 
-
 var router = express.Router();
 
 /* let our app use json */
@@ -30,6 +29,7 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
+
 
 
 
@@ -135,7 +135,6 @@ function authenticateToken(req, res, next) {
     console.log(1)
     if (err) return req.user = refreshToken(req,res,next)
     req.user = user
-    console.log(req.user)
     next()
   })
 }
