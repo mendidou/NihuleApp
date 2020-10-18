@@ -47,7 +47,7 @@ router.get('/', function (req, res, next) {
 
 
 /* get all users */
-router.get('/users',authJs.authenticateToken, function (req, res, next) {
+router.get('/users',authJs.authenticateToken(), function (req, res, next) {
 
   const SQL = `SELECT * FROM Users WHERE email = $1`
   pool.query(SQL, [req.user.email], function (dbError, dbResult) {
