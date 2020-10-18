@@ -1,4 +1,5 @@
  var  authMethods = {}
+ 
  authMethods.authenticateToken = function (req, res, next) {
     const cookie = new Cookie(req ,res , {})
     const token = cookie.get('access_token',{signed:false})
@@ -29,6 +30,6 @@
   authMethods.generateAccessToken = function (user){
     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET , {expiresIn:'1h'})
   }
-  
+
   exports.data = authMethods
   
