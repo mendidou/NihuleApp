@@ -1,7 +1,7 @@
 
 require('dotenv').config({path:`routes/.env`});
 const express = require('express');
-const authJs = require('./authentification');
+const authMethods = require('./authMethods');
 const app = express();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -47,7 +47,7 @@ router.get('/', function (req, res, next) {
 
 
 /* get all users */
-router.get('/users',authenticateToken(), function (req, res, next) {
+router.get('/users',authMethods.data.authenticateToken(), function (req, res, next) {
 
   const SQL = `SELECT * FROM Users WHERE email = $1`
   pool.query(SQL, [req.user.email], function (dbError, dbResult) {

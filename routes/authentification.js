@@ -7,6 +7,7 @@ const cors = require('cors')
 const { Pool } = require('pg');
 const { token } = require('morgan');
 const Cookie = require('cookies')
+const authMethods = require('./authMethods')
 
 var router = express.Router();
 
@@ -47,9 +48,8 @@ router.post('/login', async function (req, res, next) {
       }
       const iscomparable = await bcrypt.compare(password, dbResult.rows[0].password)
       if (iscomparable) {
-        const accessToken = generateAccessToken(user)
+        const accessToken = authMethods.data.generateAccessToken(user)
         const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET)
-
          const cookie = new Cookie(req ,res ,{})
         cookie.set('access_token',accessToken,{signed:false,secure:false,httpOnly:true})
         cookie.set('refresh_token',refreshToken,{signed:false,secure:false,httpOnly:true})
@@ -103,42 +103,7 @@ router.delete('/logout', function(req,res,next) {
 })
 
 
- function authenticateToken(req, res, next) {
-  const cookie = new Cookie(req ,res , {})
-  const token = cookie.get('access_token',{signed:false})
-
-  if (token == null) return //TODO: redirect to login with a small message
-
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-    console.log(1)
-    if (err) return req.user = refreshToken(req,res,next)
-    req.user = user
-    next()
-  })
-}
-
-function refreshToken (req,res,next) {
-  const cookie = new Cookie(req ,res , {})
-  const refreshToken = cookie.get('refresh_token',{signed:false})
-  if(refreshToken ==null)return res.sendStatus(401) //TODO: redirect to login with a small message
-  jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET , (err, user)=>{
-    if(err)res.sendStatus(403) //TODO: redirect to login with a small message
-    const accessToken = generateAccessToken({email : user})
-    cookie.set('access_token',accessToken,{signed:false,secure:false,httpOnly:true})
-    return user
-
-  })
-}
  
-function generateAccessToken(user){
-  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET , {expiresIn:'1h'})
-}
-module.exports = {
-    authenticateToken,
-    refreshToken,
-    generateAccessToken
-};
-
 
 
 // router.post('/token', function(req,res,next) {
