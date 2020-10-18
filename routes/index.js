@@ -8,6 +8,7 @@ const cors = require('cors')
 const { Pool } = require('pg');
 const { token } = require('morgan');
 const Cookie = require('cookies')
+require('index.js')
 
 var router = express.Router();
 
