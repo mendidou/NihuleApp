@@ -30,6 +30,15 @@ const pool = new Pool({
   }
 });
 
+router.get('/error', function (req, res, next) {
+  res.render('error', { title: 'Express' });
+
+});
+router.get('/layout', function (req, res, next) {
+  res.render('layout', { title: 'Express' });
+
+});
+
 
 router.get('/login', function (req, res, next) {
   res.render('login', { title: 'Express' });
