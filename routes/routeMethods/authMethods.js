@@ -11,6 +11,7 @@ const Cookie = require('cookies');
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
       if (err) return req.user = authMethods.refreshToken(req,res,next)
       req.user = user
+      console.log(4)
       next()
     })
   }
@@ -25,6 +26,7 @@ const Cookie = require('cookies');
       const accessToken = authMethods.generateAccessToken({user : user})
       console.log(1)
       cookie.set('access_token',accessToken,{signed:false,secure:false,httpOnly:true})
+      console.log(3)
       return user
   
     })
