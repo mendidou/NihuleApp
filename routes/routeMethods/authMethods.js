@@ -17,7 +17,9 @@ const Cookie = require('cookies');
   }
   
   authMethods.refreshToken =function (req,res,next) {
+    console.log("1.2")
     const cookie = new Cookie(req ,res , {})
+    console.log('1.4')
     const refreshToken = cookie.get('refresh_token',{signed:false})
     console.log(2)
     if(refreshToken ==null)  res.redirect('login',401)  //TODO: redirect to login with a small message
