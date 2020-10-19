@@ -9,22 +9,18 @@ const Cookie = require('cookies');
     if (token == null)  res.redirect('login',401); //TODO: redirect to login with a small message
   
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-      console.log(1)
-      if (err) return req.user = refreshToken(req,res,next)
+      if (err) return req.user = authMethods.refreshToken(req,res,next)
       req.user = user
       next()
     })
   }
   
   authMethods.refreshToken =function (req,res,next) {
-    console.log("1.2")
+  
     const cookie = new Cookie(req ,res , {})
-    console.log('1.4')
     const refreshToken = cookie.get('refresh_token',{signed:false})
-    console.log(2)
     if(refreshToken ==null)  res.redirect('login',401)  //TODO: redirect to login with a small message
     jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET , (err, user)=>{
-      console.log(3)
       if(err)res.redirect('login' ,403) //TODO: redirect to login with a small message
       const accessToken = generateAccessToken({email : user})
       cookie.set('access_token',accessToken,{signed:false,secure:false,httpOnly:true})
