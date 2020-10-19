@@ -19,7 +19,7 @@ const Cookie = require('cookies');
   authMethods.refreshToken =function (req,res,next) {
     const cookie = new Cookie(req ,res , {})
     const refreshToken = cookie.get('refresh_token',{signed:false})
-    if(refreshToken ==null)  return res.redirect('login',401);  //TODO: redirect to login with a small message
+    if(refreshToken ==null)   res.redirect('login',401);  //TODO: redirect to login with a small message
     jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET , (err, user)=>{
       if(err)res.redirect('login' ,403); //TODO: redirect to login with a small message
       const accessToken = generateAccessToken({email : user})
