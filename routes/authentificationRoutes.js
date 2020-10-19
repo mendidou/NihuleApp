@@ -57,6 +57,7 @@ router.post('/login', async function (req, res, next) {
         res.redirect('/')
       
       } else {
+        //TODO: add small message to the redirection
         res.redirect('login')
         return
        
@@ -64,10 +65,9 @@ router.post('/login', async function (req, res, next) {
       }
     })
   } catch{
+    //TODO: add small message to the redirection
     res.redirect('login')
   }
-
- 
 });
 
 /* register a  user to the database */
@@ -94,11 +94,11 @@ router.post('/register', async function (req, res, next) {
   }
 })
 
-router.get('/logout', function(req,res,next) {
+router.delete('/logout', function(req,res,next) {
   const cookie = new Cookie(req ,res ,{})
   cookie.set('access_token',"need reconnection",{signed:false,secure:false,httpOnly:true})
   cookie.set('refresh_token','need reconnection',{signed:false,secure:false,httpOnly:true})
-  //TODO: redirect to login with a small message
+  //TODO: add small message to the redirection
   res.redirect('login')
 })
 
