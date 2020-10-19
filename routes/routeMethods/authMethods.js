@@ -11,7 +11,7 @@ const Cookie = require('cookies');
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
       if (err) {
 
-        refreshToken(req,res,next); 
+        authMethods.refreshToken(req,res,next); 
           next()
       }else{
         req.user = user
