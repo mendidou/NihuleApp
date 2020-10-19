@@ -54,18 +54,17 @@ router.post('/login', async function (req, res, next) {
          const cookie = new Cookie(req ,res ,{})
         cookie.set('access_token',accessToken,{signed:false,secure:false,httpOnly:true})
         cookie.set('refresh_token',refreshToken,{signed:false,secure:false,httpOnly:true})
+        res.redirect('index')
       
-    res.json({ accessToken: accessToken ,refreshToken:refreshToken })
-    
-       
-      //TODO:  redirect to the dashboard after loged successfull && save the access token in the cookies 
       } else {
+        res.redirect('login')
         return
-        //TODO:redirect to login with a warning message
+       
+        
       }
     })
   } catch{
-    res.status(500).send
+    res.redirect('login')
   }
 
  
@@ -95,12 +94,12 @@ router.post('/register', async function (req, res, next) {
   }
 })
 
-router.delete('/logout', function(req,res,next) {
+router.get('/logout', function(req,res,next) {
   const cookie = new Cookie(req ,res ,{})
   cookie.set('access_token',"need reconnection",{signed:false,secure:false,httpOnly:true})
   cookie.set('refresh_token','need reconnection',{signed:false,secure:false,httpOnly:true})
   //TODO: redirect to login with a small message
-  res.sendStatus(204)
+  res.redirect('login')
 })
 
 module.exports = router;
