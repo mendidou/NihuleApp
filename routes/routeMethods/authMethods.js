@@ -9,12 +9,16 @@ const Cookie = require('cookies');
     if (token == null)  res.redirect('login',401); //TODO: redirect to login with a small message
   
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-      if (err) {req.user = authMethods.refreshToken(req,res,next);
+      if (err) {
+      req.user = authMethods.refreshToken(req,res,next);
       next()
+      
+      }else{
+        req.user = user
+        console.log(4)
+        next()
       }
-      req.user = user
-      console.log(4)
-      next()
+      
     })
   }
   
