@@ -22,7 +22,7 @@ const pool = new Pool({
 
 
 router.get('/login', function (req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('login', { title: 'Express' });
 });
 
 
