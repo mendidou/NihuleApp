@@ -8,11 +8,12 @@ const Cookie = require('cookies');
   
     if (token == null)  res.redirect('login',401); //TODO: redirect to login with a small message
   
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
       if (err) {
-
-        authMethods.refreshToken(req,res,next); 
-          next()
+        
+         authMethods.refreshToken(req,res,next);
+          console.log(user)
+    
       }else{
         req.user = user
         console.log(user)
@@ -34,8 +35,8 @@ const Cookie = require('cookies');
       console.log(1)
       cookie.set('access_token',accessToken,{signed:false,secure:false,httpOnly:true})
       console.log(3)
-      req.user = user
-      next()
+       req.user= user
+       next()
   
     })
   }
