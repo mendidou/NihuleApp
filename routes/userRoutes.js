@@ -22,13 +22,13 @@ const pool = new Pool({
 
 
 router.get('/login', function (req, res, next) {
-  res.render('../FrontNihuleApp/views/login', { title: 'Express' });
+  res.render('login', { title: 'Express' });
 });
 
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('../FrontNihuleApp/views/index', { title: 'Express' });
+  res.render('index', { title: 'Express' });
 
 });
 
