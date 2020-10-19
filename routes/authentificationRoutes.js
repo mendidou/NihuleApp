@@ -54,7 +54,7 @@ router.post('/login', async function (req, res, next) {
          const cookie = new Cookie(req ,res ,{})
         cookie.set('access_token',accessToken,{signed:false,secure:false,httpOnly:true})
         cookie.set('refresh_token',refreshToken,{signed:false,secure:false,httpOnly:true})
-        res.redirect('index')
+        res.redirect('/')
       
       } else {
         res.redirect('login')
