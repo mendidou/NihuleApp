@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const Cookie = require('cookies');
  var  authMethods = {}
 
- authMethods.authenticateToken = function (req, res, next) {
+ authMethods.authenticateToken =  async function (req, res, next) {
     const cookie = new Cookie(req ,res , {})
     const token = cookie.get('access_token',{signed:false})
   
@@ -10,9 +10,14 @@ const Cookie = require('cookies');
   
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
       if (err) {
-      req.user = authMethods.refreshToken(req,res,next);
-      console.log(user)
-      next()
+        try{
+          req.user = await authMethods.refreshToken(req,res,next);
+          console.log(user)
+          next()
+        }catch{
+          
+        }
+      
       }else{
         req.user = user
         console.log(user)
