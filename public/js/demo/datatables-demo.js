@@ -11,7 +11,7 @@ $(document).ready(function() {
     hideIdentifier: false,
     columns: {
     identifier: [0, 'id'],
-    editable: [[1, 'first'], [5, 'last']]
+    editable: [[0, 'first'],[1, 'second'],[2, 'third'],[3, 'firth'],[4, 'fiveth'] ]
     }
     });
     
