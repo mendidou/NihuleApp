@@ -5,13 +5,13 @@ $(document).ready(function() {
   
     // example.php will be used to send the data to the sever database
     $('#dataTable').Tabledit({
-    url: 'users',
+    url: 'login',
     editButton: true,
     deleteButton: true,
-    hideIdentifier: true,
+    hideIdentifier: false,
     columns: {
     identifier: [0, 'id'],
-    editable: [[2, 'first'], [3, 'last'],[3, 'nickname']]
+    editable: []
     }
     });
     
