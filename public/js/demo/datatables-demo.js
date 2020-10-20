@@ -4,6 +4,7 @@ $(document).ready(function() {
 
    /* Apply the jEditable handlers to the table */
    dataTable.$('td').editable( '#', {
+    
     "callback": function( sValue, y ) {
         var dataPos = dataTable.fnGetPosition( this );
         dataTable.fnUpdate( sValue, dataPos[0], dataPos[1] );
@@ -17,4 +18,5 @@ $(document).ready(function() {
     "height": "14px",
     "width": "100%"
 } );
+console.log("datatable")
 });
