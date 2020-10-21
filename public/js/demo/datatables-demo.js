@@ -16,10 +16,12 @@ $(document).ready(function () {
     },
     buttons: {
       edit: {
-          action: 'edit'
+          action: 'edit',
+          html:'edit'
       },
       delete: {
-            action: 'delete'
+            action: 'delete',
+            html:'delete'
       },
       save: {
         class: 'btn btn-sm btn-success',
