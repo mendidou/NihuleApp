@@ -5,7 +5,7 @@ $(document).ready(function () {
 
   // example.php will be used to send the data to the sever database
   $('#dataTable').Tabledit({
-    url: 'login',
+    url: 'dailyReport',
     editButton: false,
     deleteButton: true,
     hideIdentifier: false,
@@ -37,7 +37,6 @@ $(document).ready(function () {
           html: 'Confirm'
       }
     }
-
   });
 
   

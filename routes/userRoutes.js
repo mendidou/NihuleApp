@@ -19,16 +19,13 @@ const pool = new Pool({
   }
 });
 
-
-
-router.get('/login', function (req, res, next) {
-  res.render('login', { title: 'Express' });
-});
-
-
 /* GET home page. */
 router.get('/', authMethods.data.authenticateToken,function (req, res, next) {
   res.render('index');
+});
+
+router.get('/login', function (req, res, next) {
+  res.render('login', { title: 'Express' });
 });
 
 /* get all users */
@@ -43,6 +40,12 @@ router.get('/users',authMethods.data.authenticateToken, function (req, res, next
     res.json(dbResult)
   })
 });
+
+router.post('/dailyreport',authMethods.data.authenticateToken, function (req, res, next) {
+res.render('hello')
+});
+
+
 
 module.exports = router;
 
