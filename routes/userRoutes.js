@@ -42,7 +42,7 @@ router.get('/users',authMethods.data.authenticateToken, function (req, res, next
 });
 
 router.post('/dailyReport',authMethods.data.authenticateToken, function (req, res, next) {
-res.json('uptdated' + req.body.first)
+res.json('uptdated' + req.body[0])
 });
 
 
