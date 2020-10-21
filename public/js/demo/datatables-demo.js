@@ -16,13 +16,9 @@ $(document).ready(function () {
     },
     buttons: {
       edit: {
-        class: 'btn btn-sm btn-default',
-          html: '<span class="glyphicon glyphicon-pencil"></span>',
           action: 'edit'
       },
       delete: {
-        class: 'btn btn-sm btn-default',
-          html: '<span class="glyphicon glyphicon-trash"></span>',
             action: 'delete'
       },
       save: {
