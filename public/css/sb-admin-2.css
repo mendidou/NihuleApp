@@ -1797,6 +1797,17 @@ pre code {
   color: #fff;
   background-color: rgba(255, 255, 255, 0.075);
 }
+table{
+  direction: rtl;
+}
+ .tdspan ,.thspan {
+  display: inline-block;
+  white-space: nowrap;
+  width: 5pc;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  direction: rtl;
+ }
 
 @media (max-width: 575.98px) {
   .table-responsive-sm {
