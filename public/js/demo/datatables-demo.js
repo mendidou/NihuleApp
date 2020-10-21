@@ -16,11 +16,11 @@ $(document).ready(function () {
     },
     buttons: {
       edit: {
-          action: 'edit',
+          action: '/',
           html:'edit'
       },
       delete: {
-            action: 'delete',
+            action: '/',
             html:'delete'
       },
       save: {
@@ -30,7 +30,7 @@ $(document).ready(function () {
       restore: {
         class: 'btn btn-sm btn-warning',
           html: 'Restore',
-            action: 'restore'
+            action: '/'
       },
       confirm: {
         class: 'btn btn-sm btn-danger',
