@@ -41,7 +41,7 @@ router.get('/users',authMethods.data.authenticateToken, function (req, res, next
   })
 });
 
-router.post('/dailyreport',authMethods.data.authenticateToken, function (req, res, next) {
+router.post('/dailyReport',authMethods.data.authenticateToken, function (req, res, next) {
 res.render('hello')
 });
 
