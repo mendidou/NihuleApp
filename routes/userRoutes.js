@@ -42,8 +42,9 @@ router.get('/users',authMethods.data.authenticateToken, function (req, res, next
 });
 
 router.post('/dailyReport',authMethods.data.authenticateToken, function (req, res, next) {
-  console.log(req.body.toString())
-res.json('uptdated')
+  const obj = JSON.parse(JSON.stringify(req.body));
+console.log(obj); 
+res.json('uptdated' + obj)
 });
 
 
