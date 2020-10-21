@@ -6,8 +6,8 @@ $(document).ready(function() {
     // example.php will be used to send the data to the sever database
     $('#dataTable').Tabledit({
     url: 'login',
-    editButton: false,
-    deleteButton: false,
+    editButton:true,
+    deleteButton: true,
     hideIdentifier: false,
     columns: {
     identifier: [0, 'id'],

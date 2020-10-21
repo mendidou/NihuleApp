@@ -414,6 +414,15 @@ iframe {
   position: relative;
 }
 
+
+td{
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
 .alert-validate::before {
   content: attr(data-validate);
   position: absolute;
