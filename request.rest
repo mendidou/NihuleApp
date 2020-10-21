@@ -1,11 +1,8 @@
-POST http://nihuleapi.herokuapp.com/login
+POST http://nihuleapi.herokuapp.com/dailyReport
 Content-Type: application/json
+Cookie:access_token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoibWVuYWhlbTYxM0BnbWFpbC5jb20iLCJpYXQiOjE2MDMyMTA1NDh9LCJpYXQiOjE2MDMzMTUzMjgsImV4cCI6MTYwMzMxODkyOH0.OMXDwv0hulkrjJJReM8a8F0x9J7aeLDxZKD6OO1WP7g"
 
 
-{
-    "email":"menahem613@gmail.com",
-    "password":"1a1A1a1A"
-}
 
 ###
 
