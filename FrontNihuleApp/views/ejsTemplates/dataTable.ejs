@@ -38,7 +38,7 @@
         <tbody>
             <% users.forEach(user => { %>
             <tr>
-                    <td title=<%= user.date %>> <span><%= user.date %></span></td>
+                    <td title="<%= user.date%>"> <span><%= user.date %></span></td>
                     <td title=<%= user.credit %>><span><%= user.credit %></span></td>
                     <td title=<%= user.debit %>><span ><%= user.debit %></span></td>
                     <td title=<%= user.apt %>><span><%= user.apt %></span></td>
@@ -52,10 +52,7 @@
                     <td title=<%= user.detailsdiferentproviders %>><span><%= user.detailsdiferentproviders %></span></td>
                     <td title=<%= user.remarks %>><span><%= user.remarks %></span></td>       
             </tr>
-            <% }) %>
-            <script type="text/javascript" src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1567487539/jquery.tabledit.js"></script>
-            <script src="js/demo/datatables-demo.js"></script>
-          
+            <% }) %>          
         </tbody>
     </table>
 </div>
