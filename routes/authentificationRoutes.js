@@ -77,9 +77,7 @@ router.post('/register', async function (req, res, next) {
     const email = req.body.email
     const salt = await bcrypt.genSalt()
     const hashedPassword = await bcrypt.hash(password, salt)
-    console.log(salt)
-    console.log(hashedPassword)
-    console.log(password)
+    
     const SQL = 'INSERT INTO Users(email,password) VALUES( $1 , $2)'
     pool.query(SQL, [email, hashedPassword], function (dbError, dbResult) {
 
@@ -92,9 +90,10 @@ router.post('/register', async function (req, res, next) {
         if(dbError){
           console.log(dbError)
           return
+          res.json(dbResult2)
         }
       })
-      res.json(dbResult2)
+      
     })
   } catch{
     res.status(500).send
