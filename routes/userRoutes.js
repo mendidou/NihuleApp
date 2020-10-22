@@ -29,9 +29,9 @@ router.get('/', authMethods.data.authenticateToken,function (req, res, next) {
       res.sendStatus(500)
       return
     }
-    
+    res.render('index',{users:dbResult.rows});
   })
-  res.render('index',{users:dbResult.rows});
+
 });
 
 router.get('/login', function (req, res, next) {
