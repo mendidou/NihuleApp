@@ -85,7 +85,7 @@ router.post('/register', async function (req, res, next) {
         res.json(dbError)
         return
       }
-      const SQL = `CREATE TABLE `+ email+`dailyReport (id SERIAL, date DATE, credit FLOAT, debit FLOAT, apt INT, name TEXT, receipt INT, for TEXT, details TEXT,paymenttype TEXT,provider TEXT,differentsprovider TEXT,detailsdiferentProviders TEXT, remarks TEXT)`
+      const SQL = 'CREATE TABLE '+ email+'dailyReport (id SERIAL, date DATE, credit FLOAT, debit FLOAT, apt INT, name TEXT, receipt INT, for TEXT, details TEXT,paymenttype TEXT,provider TEXT,differentsprovider TEXT,detailsdiferentProviders TEXT, remarks TEXT)'
       pool.query(SQL,[], function(dbError , dbResult2){
         if(dbError){
           res.json(dbError.stack + dbError.message)
