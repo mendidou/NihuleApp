@@ -13,8 +13,6 @@ const Cookie = require('cookies');
          authMethods.refreshToken(req,res,next);
       }else{
         req.user = user
-        console.log(user)
-        console.log(4)
         next()
       }
       
@@ -29,9 +27,9 @@ const Cookie = require('cookies');
     jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET , (err, user)=>{
       if(err)res.redirect('login' ,403) //TODO: redirect to login with a small message
       const accessToken = authMethods.generateAccessToken({user : user})
-      console.log(1)
+      
       cookie.set('access_token',accessToken,{signed:false,secure:false,httpOnly:true})
-      console.log(3)
+      
        req.user= user
        next()
   
@@ -39,7 +37,6 @@ const Cookie = require('cookies');
   }
    
   authMethods.generateAccessToken = function (user){
-    console.log(2)
     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET , {expiresIn:'1h'})
   }
 
