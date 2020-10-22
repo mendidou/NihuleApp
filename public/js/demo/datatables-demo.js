@@ -39,7 +39,4 @@ $(document).ready(function () {
     }
   });
 
-  
-
-
 });
