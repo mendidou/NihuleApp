@@ -85,10 +85,10 @@ router.post('/register', async function (req, res, next) {
         res.json(dbError)
         return
       }
-      const SQL = "CREATE TABLE `+email+`dailyReport(id SERIAL, Date DATE, credit FLOAT, debit FLOAT, apt INT, name TEXT, receipt INT, for TEXT, details TEXT,paymentType TEXT,providr TEXT,differentsProvider TEXT,detailsDiferentProviders TEXT, Remarks TEXT)"
+      const SQL = `CREATE TABLE `+email+`dailyReport(id SERIAL, Date DATE, credit FLOAT, debit FLOAT, apt INT, name TEXT, receipt INT, for TEXT, details TEXT,paymentType TEXT,providr TEXT,differentsProvider TEXT,detailsDiferentProviders TEXT, Remarks TEXT)`
       pool.query(SQL,[], function(dbError , dbResult2){
         if(dbError){
-          console.log(dbError)
+          res.json(dbError)
           return
           res.json(dbResult2)
         }
