@@ -10,3 +10,7 @@ Content-Type: application/json
 ###
 
 GET http://nihuleapi.herokuapp.com/show
+
+### 
+post http://nihuleapi.herokuapp.com/addDailyReport
+Cookie: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRldm5paHVsZUBnbWFpbC5jb20iLCJpYXQiOjE2MDMzOTc1MTIsImV4cCI6MTYwMzQwMTExMn0.bOsmmZy-qc6MwtTtSPjqeMu1Lz-fb_2myqJiw_XstfI
