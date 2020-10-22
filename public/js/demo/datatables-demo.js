@@ -5,12 +5,12 @@ $(document).ready(function () {
   $('#dataTable').Tabledit({
     url: 'dailyReport',
     editButton: false,
-    deleteButton: false,
-    hideIdentifier: false,
+    deleteButton: true,
+    hideIdentifier: true,
 
     columns: {
       identifier: [0, 'id'],
-      editable: [[0, 'first'], [1, 'second'], [2, 'third'], [3, 'firth'], [4, 'fiveth']]
+      editable: [[1, 'first'], [2, 'second'], [3, 'third'], [4, 'firth'], [5, 'fiveth']]
     },
     buttons: {
       edit: {
