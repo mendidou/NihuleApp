@@ -5,7 +5,7 @@ $(document).ready(function () {
   $('#dataTable').Tabledit({
     url: 'dailyReport',
     editButton: false,
-    deleteButton: true,
+    deleteButton: false,
     hideIdentifier: true,
 
     columns: {
