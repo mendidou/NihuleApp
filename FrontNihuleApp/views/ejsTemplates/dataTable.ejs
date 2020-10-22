@@ -36,8 +36,8 @@
            
         </tfoot>
         <tbody>
+            <% users.forEach(user => { %>
             <tr>
-                <% users.forEach(user => { %>
                     <td title="test"><span class="tdspan"><%= user.date %> </span></td>
                     <td title="test"><span class="tdspan"><%= user.credit %></span></td>
                     <td title="test"><span class="tdspan"><%= user.debit %></span></td>
@@ -50,11 +50,9 @@
                     <td title="test"><span class="tdspan"><%= user.provider %></span></td>
                     <td title="test"><span class="tdspan"><%= user.differentsprovider %> </span></td>
                     <td title="test"><span class="tdspan"><%= user.detailsdiferentproviders %></span></td>
-                    <td title="test"><span class="tdspan"><%= user.remarks %></span></td>
-                 
-                <% }) %>
-                  
+                    <td title="test"><span class="tdspan"><%= user.remarks %></span></td>       
             </tr>
+            <% }) %>
         </tbody>
     </table>
 </div>
