@@ -86,7 +86,7 @@ router.post('/register', async function (req, res, next) {
         return
       }
       //create the dayli report a Table  
-      const dailyreportTableName = email+"dailyreport"[0]
+      const dailyreportTableName = email+"dailyreport".split("@")[0]
       console.log(dailyreportTableName)
       const SQL = "CREATE TABLE "+dailyreportTableName+" (id SERIAL ,date DATE, credit INT, debit INT, apt INT, name TEXT,receipt INT ,forsomeone TEXT ,details TEXT,paymenttype TEXT ,provider TEXT,differentsprovider TEXT,detailsdiferentProviders TEXT,remarks TEXT)"
       pool.query(SQL,[], function(dbError , dbResult2){
