@@ -37,19 +37,23 @@
         </tfoot>
         <tbody>
             <tr>
-                   <td title="test"><span class="tdspan">תאריך</span></td>
-                    <td title="test"><span class="tdspan">זכות</span></td>
-                    <td title="test"><span class="tdspan">חובה</span></td>
-                    <td title="test"><span class="tdspan">דירה</span></td>
-                    <td title="test"><span class="tdspan">שם</span></td>
-                    <td title="test"><span class="tdspan">קבלה</span></td>
-                    <td title="test"><span class="tdspan">עבור</span></td>
-                    <td title="test"><span class="tdspan">פירוט</span></td>
-                    <td title="test"><span class="tdspan">סוג תשלום</span></td>
-                    <td title="test"><span class="tdspan">ספק</span></td>
-                    <td title="test"><span class="tdspan">ספקי שונות</span></td>
-                    <td title="test"><span class="tdspan">פירוט ספקי שונות</span></td>
-                    <td title="test"><span class="tdspan">הערות</span></td>
+                <% users.forEach(user => { %>
+                    <td title="test"><span class="tdspan"><%= user.date %> </span></td>
+                    <td title="test"><span class="tdspan"><%= user.credit %></span></td>
+                    <td title="test"><span class="tdspan"><%= user.debit %></span></td>
+                    <td title="test"><span class="tdspan"><%= user.apt %></span></td>
+                    <td title="test"><span class="tdspan"><%= user.name %></span></td>
+                    <td title="test"><span class="tdspan"><%= user.receipt %></span></td>
+                    <td title="test"><span class="tdspan"><%= user.forsomeone %></span></td>
+                    <td title="test"><span class="tdspan"><%= user.details %></span></td>
+                    <td title="test"><span class="tdspan"><%= user.paymenttype %> </span></td>
+                    <td title="test"><span class="tdspan"><%= user.provider %></span></td>
+                    <td title="test"><span class="tdspan"><%= user.differentsprovider %> </span></td>
+                    <td title="test"><span class="tdspan"><%= user.detailsdiferentproviders %></span></td>
+                    <td title="test"><span class="tdspan"><%= user.remarks %></span></td>
+                 
+                <% }) %>
+                  
             </tr>
         </tbody>
     </table>
