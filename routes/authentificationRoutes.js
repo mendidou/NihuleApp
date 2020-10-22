@@ -88,7 +88,7 @@ router.post('/register', async function (req, res, next) {
       //const SQL = 'CREATE TABLE '+ email+'dail 
       const dailyreportTableName = email+"dailyreport"
       console.log(dailyreportTableName)
-      const SQL = "CREATE TABLE mendouledailyreport2 (id SERIAL ,date DATE, credit INTE)"
+      const SQL = "CREATE TABLE mendouledailyreport2 (id SERIAL ,date DATE, credit INT)"
       pool.query(SQL,[], function(dbError , dbResult2){
          if(dbError){
          res.json(dbError.stack + dbError.message)
