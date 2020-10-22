@@ -21,6 +21,17 @@ const pool = new Pool({
 
 /* GET home page. */
 router.get('/', authMethods.data.authenticateToken,function (req, res, next) {
+  const dailyReportTable = authMethods.data.dailyReportNameTable(req.user.email)
+  const SQL = `SELECT * FROM `+dailyReportTable
+  pool.query(SQL, [], function (dbError, dbResult) {
+    if (dbError) {
+      console.log(dbError
+      )
+      res.sendStatus(500)
+      return
+    }
+    console.log(dbResult)
+  })
   res.render('index');
 });
 
