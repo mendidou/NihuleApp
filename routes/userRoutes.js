@@ -25,14 +25,13 @@ router.get('/', authMethods.data.authenticateToken,function (req, res, next) {
   const SQL = `SELECT * FROM `+dailyReportTable
   pool.query(SQL, [], function (dbError, dbResult) {
     if (dbError) {
-      console.log(dbError
-      )
+      console.log(dbError)
       res.sendStatus(500)
       return
     }
-    console.log(dbResult)
+    res.json(dbResult)
   })
-  res.render('index');
+  //res.render('index');
 });
 
 router.get('/login', function (req, res, next) {
