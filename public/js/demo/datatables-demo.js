@@ -4,9 +4,9 @@ $(document).ready(function () {
   // example.php will be used to send the data to the sever database
   $('#dataTable').Tabledit({
     url: 'dailyReport',
-    editButton: false,
+    editButton: true,
     deleteButton: false,
-    hideIdentifier: false,
+    hideIdentifier: true,
 
     columns: {
       identifier: [0, 'id'],
