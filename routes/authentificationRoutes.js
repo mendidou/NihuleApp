@@ -93,7 +93,6 @@ router.post('/register', async function (req, res, next) {
           res.json(dbError)
           return
         }
-        res.json(dbResult)
       })
       res.json(dbResult)
     })
