@@ -87,7 +87,7 @@ router.post('/register', async function (req, res, next) {
       }
       //const SQL = 'CREATE TABLE '+ email+'dail 
       const dailyreportTableName = email+"dailyreport"
-      const SQL = "CREATE TABLE "+password+"(id SERIAL ,date DATE, credit INT, debit INT, apt INT, name TEXT,receipt INT ,for TEXT ,details TEXT,paymenttype TEXT ,provider TEXT,differentsprovider TEXT,detailsdiferentProviders TEXT,remarks TEXT)"
+      const SQL = "CREATE TABLE "+dailyreportTableName+" (id SERIAL ,date DATE, credit INT, debit INT, apt INT, name TEXT,receipt INT ,for TEXT ,details TEXT,paymenttype TEXT ,provider TEXT,differentsprovider TEXT,detailsdiferentProviders TEXT,remarks TEXT)"
       pool.query(SQL,[], function(dbError , dbResult2){
          if(dbError){
          res.json(dbError.stack + dbError.message)
