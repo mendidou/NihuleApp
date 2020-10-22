@@ -95,6 +95,7 @@ router.post('/register', async function (req, res, next) {
           return
         }
         res.json(dbResult2)
+        
       })
       
     })
