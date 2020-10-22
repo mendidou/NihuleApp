@@ -41,6 +41,19 @@ router.get('/users',authMethods.data.authenticateToken, function (req, res, next
   })
 });
 
+router.post('/addDailyReport',authMethods.data.authenticateToken, function (req, res, next) {
+  const dailyReportTable = authMethods.data.dailyReportNameTable(req.body.email)
+
+  const SQL = "INSERT INTO "+dailyReportTable+"(date, credit, debit, apt, name ,receipt ,forsomeone,details,paymenttype,provider,differentsprovider,detailsdiferentProviders,remarks) VALUES ($1 ,$2 ,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)"
+  pool.query(SQL, [Date(),250,-250,3], function (dbError, dbResult) {
+    if (dbError) {
+      res.json(dbError)
+      return
+    }
+    res.json(dbResult)
+  })
+  });
+
 router.post('/dailyReport',authMethods.data.authenticateToken, function (req, res, next) {
 res.json('uptdated' + obj)
 });

@@ -40,5 +40,10 @@ const Cookie = require('cookies');
     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET , {expiresIn:'1h'})
   }
 
+  authMethods.dailyReportNameTable =function (email){
+    const dailyreportTableName = email.split('@')[0]+"dailyreport"
+    return dailyreportTableName
+  }
+
   exports.data = authMethods
   
