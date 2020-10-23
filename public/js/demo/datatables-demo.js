@@ -43,18 +43,7 @@ $(document).ready(function () {
           html: 'Confirm'
       }
     },
-    onSuccess: function(data, textStatus, jqXHR) {
-      console.log('onSuccess(data, textStatus, jqXHR)');
-      console.log(data);
-      console.log(textStatus);
-      console.log(jqXHR);
     
-      //  $('#'+data.id).remove().class("table-danger")
-      console.log(data)
-      
-      
-  },
-  
   });
 
   table = $('#dataTable').DataTable();
