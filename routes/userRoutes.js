@@ -67,7 +67,7 @@ router.post('/addDailyReport',authMethods.data.authenticateToken, function (req,
   });
 
 router.post('/dailyReport',authMethods.data.authenticateToken, function (req, res, next) {
-res.json('uptdated' + obj)
+res.json('uptdated')
 });
 
 
