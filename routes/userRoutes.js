@@ -68,7 +68,7 @@ router.post('/addDailyReport',authMethods.data.authenticateToken, function (req,
 
 router.post('/dailyReport',authMethods.data.authenticateToken, function (req, res, next) {
 if(req.body.action == "delete"){
-  const SQL = "DELETE FROM "+ authMethods.data.dailyReportNameTable+" WHERE id = $1;"
+  const SQL = "DELETE FROM "+ authMethods.data.dailyReportNameTable+" WHERE id ='$1';"
 
   pool.query(SQL, [req.body.id], function (dbError, dbResult) {
     if (dbError) {
