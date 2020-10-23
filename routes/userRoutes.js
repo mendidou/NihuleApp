@@ -80,13 +80,12 @@ if(req.body.action == "delete"){
   })
 return
 }
-if (!req.body.one ==null) {
+if (req.body.one) {
   console.log("one")
   res.json(req.body.one)
-}else if (!req.body.two == null) {
+}else if (req.body.two) {
   console.log("two")
   res.json(req.body.two)
-  return
 }
 else{
   res.json(req.body)
