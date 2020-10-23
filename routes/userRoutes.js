@@ -80,6 +80,12 @@ if(req.body.action == "delete"){
   })
 return
 }
+if (!req.body.one ==null) {
+  console.log("one")
+}else if (!req.body.two == null) {
+  console.log("two")
+}
+
 
 
 });
