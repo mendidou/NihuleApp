@@ -86,6 +86,7 @@ if (!req.body.one ==null) {
 }else if (!req.body.two == null) {
   console.log("two")
   res.json(req.body.two)
+  return
 }
 res.json(req.body)
 
