@@ -82,10 +82,12 @@ return
 }
 if (!req.body.one ==null) {
   console.log("one")
+  res.json(req.body.one)
 }else if (!req.body.two == null) {
   console.log("two")
+  res.json(req.body.two)
 }
-
+res.json(req.body)
 
 
 });
