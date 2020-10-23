@@ -8,6 +8,8 @@ $(document).ready(function () {
     editButton: false,
     deleteButton: true,
     hideIdentifier: true,
+    restoreButton:false,
+  
 
     columns: {
       identifier: [0, 'id'],
