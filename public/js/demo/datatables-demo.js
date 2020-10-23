@@ -49,7 +49,7 @@ $(document).ready(function () {
       console.log(textStatus);
       console.log(jqXHR);
       if(data.action =="delete"){
-        $('#'+data.id).remove().class("table-danger")
+      //  $('#'+data.id).remove().class("table-danger")
       }
       
   },
