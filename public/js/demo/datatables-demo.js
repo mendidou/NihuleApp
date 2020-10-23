@@ -52,7 +52,7 @@ $(document).ready(function () {
       console.log(jqXHR);
       if(data.action =="delete"){
       //  $('#'+data.id).remove().class("table-danger")
-      console.log(data.action)
+      console.log(data)
       }
       
   },
