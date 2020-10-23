@@ -88,7 +88,10 @@ if (!req.body.one ==null) {
   res.json(req.body.two)
   return
 }
-res.json(req.body)
+else{
+  res.json(req.body)
+}
+
 
 
 });
