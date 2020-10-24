@@ -14,10 +14,10 @@ $(document).ready(function () {
     columns: {
       identifier: [0, 'id'],
       editable: [
-        [1, 'one'], [2, 'two'], [3, 'three'], [4, 'four'],
-       [5, 'five'],[6, 'six'],[7, 'seven'],[8, 'height'],
-       [9, 'nine'],[10, 'ten'],[11, 'eleven'],[12, 'twelve'],
-       [13, 'thirteen']
+        [1, 'date'], [2, 'credit'], [3, 'debit'], [4, 'apt'],
+       [5, 'name'],[6, 'receipt'],[7, 'forsomeone'],[8, 'details'],
+       [9, 'paymenttype'],[10, 'provider'],[11, 'differentsprovider'],
+       [12, 'detailsdiferentProviders'], [13, 'remarks']
       ]
     },
     buttons: {
@@ -43,6 +43,12 @@ $(document).ready(function () {
           html: 'Confirm'
       }
     },
+
+    onAjax:function(action,serialize){
+      console.log(action)
+      console.log(serialize)
+    }
+  
     
   });
 

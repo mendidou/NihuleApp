@@ -74,24 +74,65 @@ if(req.body.action == "delete"){
   pool.query(SQL, [req.body.id], function (dbError, dbResult) {
     if (dbError) {
       res.json(dbError.stack)
-      return
+      
     }
     res.json(dbResult)
   })
-return
 }
-if (req.body.one) {
-  console.log("one")
-  res.json(req.body.one)
-}else if (req.body.two) {
-  console.log("two")
+if (req.body.date) {
+  ////
+  [1, 'date'], [2, 'credit'], [3, 'debit'], [4, 'apt'],
+       [5, 'name'],[6, 'receipt'],[7, 'forsomeone'],[8, 'details'],
+       [9, 'paymenttype'],[10, 'provider'],[11, 'differentsprovider'],
+       [12, 'detailsdiferentProviders'], [13, 'remarks']
+  res.json(req.body.date)
+}else if (req.body.credit) {
+
+  res.json(req.body.credit)
+}
+else if (req.body.debit) {
+
+  res.json(req.body.debit)
+}
+else if (req.body.apt) {
+
+  res.json(req.body.apt)
+}
+else if (req.body.name) {
+
   res.json(req.body.two)
 }
-else{
-  res.json(req.body)
+else if (req.body.receipt) {
+  res.json(req.body.two)
 }
+else if (req.body.forsomeone) {
 
+  res.json(req.body.two)
+}
+else if (req.body.details) {
+  
+  res.json(req.body.two)
+}
+else if (req.body.paymenttype) {
 
+  res.json(req.body.two)
+}
+else if (req.body.provider) {
+
+  res.json(req.body.ten)
+}
+else if (req.body.differentsprovider) {
+
+  res.json(req.body.two)
+}
+else if (req.body.detailsdiferentProviders) {
+
+  res.json(req.body.two)
+}
+else if (req.body.remarks) {
+  
+  res.json(req.body.two)
+}
 
 });
 
