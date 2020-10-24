@@ -86,7 +86,6 @@ if(req.body.action == "delete"){
 // 'name', 'receipt', 'forsomeone', 'details',
 //  'paymenttype', 'provider', 'differentsprovider',
 // 'detailsdiferentProviders',  'remarks']
-
 if (req.body.date) {
   const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
   pool.query(SQL, [req.body.date,req.body.id], function (dbError, dbResult) {
@@ -98,51 +97,137 @@ if (req.body.date) {
     return
   })
 }else if (req.body.credit) {
-
-  res.json(req.body.credit)
+  const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
+  pool.query(SQL, [req.body.credit,req.body.id], function (dbError, dbResult) {
+    if (dbError) {
+      res.json(dbError.stack)
+      return
+    }
+    res.json(dbResult)
+    return
+  })
 }
 else if (req.body.debit) {
-
-  res.json(req.body.debit)
+  const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
+  pool.query(SQL, [req.body.debit,req.body.id], function (dbError, dbResult) {
+    if (dbError) {
+      res.json(dbError.stack)
+      return
+    }
+    res.json(dbResult)
+    return
+  })
 }
 else if (req.body.apt) {
 
-  res.json(req.body.apt)
+  const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
+  pool.query(SQL, [req.body.apt,req.body.id], function (dbError, dbResult) {
+    if (dbError) {
+      res.json(dbError.stack)
+      return
+    }
+    res.json(dbResult)
+    return
+  })
 }
 else if (req.body.name) {
-
-  res.json(req.body.two)
+const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
+  pool.query(SQL, [req.body.name,req.body.id], function (dbError, dbResult) {
+    if (dbError) {
+      res.json(dbError.stack)
+      return
+    }
+    res.json(dbResult)
+    return
+  })
 }
 else if (req.body.receipt) {
-  res.json(req.body.two)
+  const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
+  pool.query(SQL, [req.body.receipt,req.body.id], function (dbError, dbResult) {
+    if (dbError) {
+      res.json(dbError.stack)
+      return
+    }
+    res.json(dbResult)
+    return
+  })
 }
 else if (req.body.forsomeone) {
-
-  res.json(req.body.two)
+  const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
+  pool.query(SQL, [req.body.forsomeone,req.body.id], function (dbError, dbResult) {
+    if (dbError) {
+      res.json(dbError.stack)
+      return
+    }
+    res.json(dbResult)
+    return
+  })
 }
 else if (req.body.details) {
-  
-  res.json(req.body.two)
+  const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
+  pool.query(SQL, [req.body.dailyReportTable,req.body.id], function (dbError, dbResult) {
+    if (dbError) {
+      res.json(dbError.stack)
+      return
+    }
+    res.json(dbResult)
+    return
+  })
 }
 else if (req.body.paymenttype) {
-
-  res.json(req.body.two)
+  const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
+  pool.query(SQL, [req.body.paymenttype,req.body.id], function (dbError, dbResult) {
+    if (dbError) {
+      res.json(dbError.stack)
+      return
+    }
+    res.json(dbResult)
+    return
+  })
 }
 else if (req.body.provider) {
-
-  res.json(req.body.ten)
+  const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
+  pool.query(SQL, [req.body.provider,req.body.id], function (dbError, dbResult) {
+    if (dbError) {
+      res.json(dbError.stack)
+      return
+    }
+    res.json(dbResult)
+    return
+  })
 }
 else if (req.body.differentsprovider) {
-
-  res.json(req.body.two)
+  const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
+  pool.query(SQL, [req.body.differentsprovider,req.body.id], function (dbError, dbResult) {
+    if (dbError) {
+      res.json(dbError.stack)
+      return
+    }
+    res.json(dbResult)
+    return
+  })
 }
 else if (req.body.detailsdiferentProviders) {
-
-  res.json(req.body.two)
+  const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
+  pool.query(SQL, [req.body.detailsdiferentProviders,req.body.id], function (dbError, dbResult) {
+    if (dbError) {
+      res.json(dbError.stack)
+      return
+    }
+    res.json(dbResult)
+    return
+  })
 }
 else if (req.body.remarks) {
-  
-  res.json(req.body.two)
+  const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
+  pool.query(SQL, [req.body.remarks,req.body.id], function (dbError, dbResult) {
+    if (dbError) {
+      res.json(dbError.stack)
+      return
+    }
+    res.json(dbResult)
+    return
+  })
 }
 
 });
