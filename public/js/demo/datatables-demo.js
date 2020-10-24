@@ -1,3 +1,5 @@
+const e = require("express");
+
 // Call the dataTables jQuery plugin
 var table
 $(document).ready(function () {
@@ -59,18 +61,19 @@ $(document).ready(function () {
             return false
           }
           else{
-            console.log(true)
-           // return true
+            console.log(1)
+           return true
           }
-          console.log(true)
-        }
-        console.log(true)
+        }else {
+          alert("this is not a good format")
+          return false
+        } 
       })
       }else{
-        console.log(true)
-        //return true
+        
+        return true
       }
-      console.log(true)
+     return false
     }
   
     
