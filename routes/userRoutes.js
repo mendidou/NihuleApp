@@ -82,12 +82,12 @@ if(req.body.action == "delete"){
     return
   })
 }
-const editReq = ['date','credit',  'debit', 'apt',
+const editReqs = ['date','credit',  'debit', 'apt',
 'name', 'receipt', 'forsomeone', 'details',
  'paymenttype', 'provider', 'differentsprovider',
 'detailsdiferentProviders',  'remarks']
-editReqs.forEach(requ =>{ 
-  if(req.body.requ){
+editReqs.forEach(editReq =>{ 
+  if(req.body.editReq){
     res.json(req.body.request)
   }
 })
