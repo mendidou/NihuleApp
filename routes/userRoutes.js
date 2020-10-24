@@ -90,7 +90,7 @@ editReqs.forEach(editReq =>{
   if(req.body.editReq){
     res.json(req.body.request)
   }
-  console.log(1++)
+  console.log(1)
 })
 // if (req.body.date) {
 //   ////
