@@ -47,6 +47,7 @@ $(document).ready(function () {
     onAjax:function(action,serialize){
       console.log(action)
       var result = urlEncodedStringToObject(serialize)
+      console.log(result)
       if (result.date){
         return validatedate(result.date)
       }
