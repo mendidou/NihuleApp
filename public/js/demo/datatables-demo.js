@@ -45,11 +45,22 @@ $(document).ready(function () {
     },
 
     onAjax:function(action,serialize){
-      console.log(action)
       var result = urlEncodedStringToObject(serialize)
-      console.log(result)
+     
       if (result["date"]){
         return validatedate(result["date"])
+      }
+      else if (result["credit"] || result["debit"] ||result["apt"] ||result["receipt"]){
+       var resultsArr = ["credit" ,"debit","apt","receipt"]
+      var result = forEach.resultsArr(name => {
+        if (result[name]){
+          if (isNaN(result[name])){
+            alert("this is not a good fomat please write a number")
+            return false
+          }
+          return true
+        }
+      })
       }
       return true
     }
