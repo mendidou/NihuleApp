@@ -46,7 +46,7 @@ $(document).ready(function () {
 
     onAjax:function(action,serialize){
       console.log(action)
-      console.log(JSON.parse({"serial": serialize}));
+      console.log(JSON.parse(serialize));
       return true
     }
   
