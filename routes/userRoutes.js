@@ -88,6 +88,7 @@ const editReqs = ['date','credit',  'debit', 'apt',
 'detailsdiferentProviders',  'remarks']
 var reqBodyJsObject = JSON.parse(req.body)
 console.log(reqBodyJsObject)
+res.json(reqBodyJsObject)
 //console.log(reqBodyJsObject)
 //editReqs.forEach(editReq =>{ 
 //  if(reqBodyJsObject[editReq]){
