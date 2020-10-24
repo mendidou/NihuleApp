@@ -70,8 +70,8 @@ function validatedate(inputText)
   {
   
   //Test which seperator is used '/' or '-'
-  var opera1 = inputText.value.split('/');
-  var opera2 = inputText.value.split('-');
+  var opera1 = inputText.split('/');
+  var opera2 = inputText.split('-');
   lopera1 = opera1.length;
   lopera2 = opera2.length;
   // Extract the string into month, date and year
