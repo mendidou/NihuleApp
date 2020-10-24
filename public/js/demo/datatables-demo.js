@@ -52,10 +52,10 @@ $(document).ready(function () {
       }
       else if (result["credit"] || result["debit"] ||result["apt"] ||result["receipt"]){
        var resultsArr = ["credit" ,"debit","apt","receipt"]
-      var result = forEach.resultsArr(name => {
+      var result = resultsArr.forEach(name => {
         if (result[name]){
           if (isNaN(result[name])){
-            alert("this is not a good fomat please write a number")
+            alert("this is not a good format please write a number")
             return false
           }
           return true
