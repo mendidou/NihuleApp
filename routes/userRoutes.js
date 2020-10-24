@@ -21,12 +21,14 @@ const pool = new Pool({
 
 /* GET home page. */
 router.get('/', authMethods.data.authenticateToken,function (req, res, next) {
+  if (!req.user.email){
+    res.render('login',{message:"please login again"});
+  }
   const dailyReportTable = authMethods.data.dailyReportNameTable(req.user.email)
   const SQL = `SELECT * FROM `+dailyReportTable
   pool.query(SQL, [], function (dbError, dbResult) {
     if (dbError) {
-      console.log(dbError)
-      res.sendStatus(500)
+     res.sendStatus(500)
       return
     }
     res.render('index',{users:dbResult.rows});
