@@ -46,14 +46,10 @@ $(document).ready(function () {
 
     onAjax:function(action,serialize){
       console.log(action)
-      var result ={}
-      var queriesObject = serialize.split('&')
-      queriesObject.forEach(function(query) {
-        query = query.split('=');
-    result[query[0]] = decodeURIComponent(query[1] || '');
-    console.log(result)
-});
-      console.log(serialize);
+      var result = urlEncodedStringToObject(serialize)
+      if (result.date){
+        return validatedate(result.date)
+      }
       return true
     }
   
@@ -123,4 +119,15 @@ function validatedate(inputText)
   document.form1.text1.focus();
   return false;
   }
+  }
+
+  function urlEncodedStringToObject (string){
+
+    var result ={}
+      var queriesObject = serialize.split('&')
+      queriesObject.forEach(function(query) {
+        query = query.split('=');
+    result[query[0]] = decodeURIComponent(query[1] || '');
+    return result
+});
   }
