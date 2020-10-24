@@ -48,7 +48,7 @@ $(document).ready(function () {
       console.log(action)
       var result = urlEncodedStringToObject(serialize)
       console.log(result)
-      if (result.date){
+      if (result["date"]){
         return validatedate(result.date)
       }
       return true
@@ -129,6 +129,8 @@ function validatedate(inputText)
       queriesObject.forEach(function(query) {
         query = query.split('=');
     result[query[0]] = decodeURIComponent(query[1] || '');
-    return result
+   
 });
+console.log(result)
+return result
   }
