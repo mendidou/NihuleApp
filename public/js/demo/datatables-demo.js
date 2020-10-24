@@ -124,7 +124,7 @@ function validatedate(inputText)
   function urlEncodedStringToObject (string){
 
     var result ={}
-      var queriesObject = serialize.split('&')
+      var queriesObject = string.split('&')
       queriesObject.forEach(function(query) {
         query = query.split('=');
     result[query[0]] = decodeURIComponent(query[1] || '');
