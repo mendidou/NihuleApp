@@ -46,7 +46,7 @@ $(document).ready(function () {
 
     onAjax:function(action,serialize){
       console.log(action)
-      console.log(serialize.action);
+      console.log(serialize);
       return true
     }
   
