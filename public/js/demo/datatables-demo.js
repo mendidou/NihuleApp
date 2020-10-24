@@ -59,13 +59,13 @@ $(document).ready(function () {
             return false
           }
           else{
-            return true
+           // return true
           }
           
         }
       })
       }else{
-        return true
+        //return true
       }
     
     }
