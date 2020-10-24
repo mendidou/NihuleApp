@@ -68,7 +68,7 @@ function validatedate(inputText)
   // Match the date format through regular expression
   if(inputText.match(dateformat))
   {
-  document.form1.text1.focus();
+  
   //Test which seperator is used '/' or '-'
   var opera1 = inputText.value.split('/');
   var opera2 = inputText.value.split('-');
@@ -77,11 +77,11 @@ function validatedate(inputText)
   // Extract the string into month, date and year
   if (lopera1>1)
   {
-  var pdate = inputText.value.split('/');
+  var pdate = inputText.split('/');
   }
   else if (lopera2>1)
   {
-  var pdate = inputText.value.split('-');
+  var pdate = inputText.split('-');
   }
   var dd = parseInt(pdate[0]);
   var mm  = parseInt(pdate[1]);
