@@ -86,7 +86,8 @@ const editReqs = ['date','credit',  'debit', 'apt',
 'name', 'receipt', 'forsomeone', 'details',
  'paymenttype', 'provider', 'differentsprovider',
 'detailsdiferentProviders',  'remarks']
-var reqBodyJsObject = JSON.parse(req.body)
+var reqStrind = req.body.toString
+var reqBodyJsObject =JSON.parse(reqStrind)
 console.log(reqBodyJsObject)
 res.json(reqBodyJsObject)
 //console.log(reqBodyJsObject)
