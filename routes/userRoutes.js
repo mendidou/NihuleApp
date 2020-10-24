@@ -90,7 +90,7 @@ var reqBodyJsObject = JSON.parse(req.body)
 editReqs.forEach(editReq =>{ 
   if(reqBodyJsObject[editReq]){
     res.json(reqBodyJsObject[editReq])
-    break;
+    return
   }
   console.log(1)
 })
