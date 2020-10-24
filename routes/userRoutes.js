@@ -86,8 +86,8 @@ const editReq = ['date','credit',  'debit', 'apt',
 'name', 'receipt', 'forsomeone', 'details',
  'paymenttype', 'provider', 'differentsprovider',
 'detailsdiferentProviders',  'remarks']
-editReqs.forEach(request =>{
-  if(req.body.request){
+editReqs.forEach(requ =>{ 
+  if(req.body.requ){
     res.json(req.body.request)
   }
 })
