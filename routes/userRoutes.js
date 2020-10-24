@@ -82,13 +82,13 @@ if(req.body.action == "delete"){
     return
   })
 }
-const editReqs = ['date','credit',  'debit', 'apt',
-'name', 'receipt', 'forsomeone', 'details',
- 'paymenttype', 'provider', 'differentsprovider',
-'detailsdiferentProviders',  'remarks']
+// const editReqs = ['date','credit',  'debit', 'apt',
+// 'name', 'receipt', 'forsomeone', 'details',
+//  'paymenttype', 'provider', 'differentsprovider',
+// 'detailsdiferentProviders',  'remarks']
 
 if (req.body.date) {
-  const SQL = "UPDATE FROM "+dailyReportTable +" SET date = $1 WHERE id = $2;"
+  const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
   pool.query(SQL, [req.body.date,req.body.id], function (dbError, dbResult) {
     if (dbError) {
       res.json(dbError.stack)
