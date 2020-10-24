@@ -58,13 +58,12 @@ $(document).ready(function () {
             alert("this is not a good format please write a number")
             return false
           }
-          console.log(true)
+        
           return true
         }
       })
       }
-      console.log(true)
-      return true
+    
     }
   
     
