@@ -49,7 +49,7 @@ $(document).ready(function () {
       var result = urlEncodedStringToObject(serialize)
       console.log(result)
       if (result["date"]){
-        return validatedate(result.date)
+        return validatedate(result["date"])
       }
       return true
     }
