@@ -59,15 +59,18 @@ $(document).ready(function () {
             return false
           }
           else{
+            console.log(true)
            // return true
           }
-          
+          console.log(true)
         }
+        console.log(true)
       })
       }else{
+        console.log(true)
         //return true
       }
-    
+      console.log(true)
     }
   
     
