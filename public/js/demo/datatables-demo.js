@@ -1,5 +1,3 @@
-const e = require("express");
-
 // Call the dataTables jQuery plugin
 var table
 $(document).ready(function () {
@@ -73,6 +71,7 @@ $(document).ready(function () {
         
         return true
       }
+      console.log(5)
      return false
     }
   
