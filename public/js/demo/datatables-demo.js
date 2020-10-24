@@ -46,6 +46,12 @@ $(document).ready(function () {
 
     onAjax:function(action,serialize){
       console.log(action)
+      var result = {};
+     serialize.forEach(function(ser) {
+    ser = ser.split('=');
+    result[ser[0]] = decodeURIComponent(ser[1] || '');
+    console.log(result)
+});
       console.log(serialize);
       return true
     }
