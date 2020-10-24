@@ -63,9 +63,10 @@ $(document).ready(function () {
 
 function validatedate(inputText)
   {
+
   var dateformat = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
   // Match the date format through regular expression
-  if(inputText.value.match(dateformat))
+  if(inputText.match(dateformat))
   {
   document.form1.text1.focus();
   //Test which seperator is used '/' or '-'
