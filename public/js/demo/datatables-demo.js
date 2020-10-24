@@ -118,7 +118,6 @@ function validatedate(inputText)
   else
   {
   alert("Invalid date format!");
-  document.form1.text1.focus();
   return false;
   }
   }
