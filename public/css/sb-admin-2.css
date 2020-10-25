@@ -621,6 +621,11 @@ pre code {
   margin-left: 0;
 }
 
+.btnnoborder {
+  border: none;
+ outline:none;
+}
+
 .no-gutters > .col,
 .no-gutters > [class*="col-"] {
   padding-right: 0;
