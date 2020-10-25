@@ -26,6 +26,7 @@ $(document).ready(function () {
         html: 'edit'
       },
       delete: {
+        class:"btn btn-outline-danger",
         action: 'delete',
         html: 'delete'
       },
