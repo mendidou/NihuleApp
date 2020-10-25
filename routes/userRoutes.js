@@ -32,7 +32,7 @@ router.get('/', authMethods.data.authenticateToken,function (req, res, next) {
       return
     }
     dbResult.rows.forEach(user => {
-      user.date = new Date(user.date).toISOString();
+      user.date = new Date(user.date).toLocaleDateString('pt-PT');
     });
     console.log(dbResult.rows)
     res.render('index',{users:dbResult.rows});
