@@ -16,7 +16,7 @@ $(document).ready(function () {
       editable: [
         [1, 'date'], [2, 'credit'], [3, 'debit'], [4, 'apt'],
         [5, 'name'], [6, 'receipt'], [7, 'forsomeone'], [8, 'details'],
-        [9, 'paymenttype'], [10, 'provider'], [11, 'differentsprovider'],
+        [9, 'paymenttype', {"1":"transfer","2": "dd" ,"":"ff"}], [10, 'provider'], [11, 'differentsprovider'],
         [12, 'detailsdiferentProviders'], [13, 'remarks']
       ]
     },
