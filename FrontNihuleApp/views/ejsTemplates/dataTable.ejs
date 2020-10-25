@@ -1,59 +1,64 @@
-<div class="table-responsive hebrewtable" >
+<div class="table-responsive hebrewtable">
     <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
         <thead>
-                <tr>
-                    <th title="id" ><span class="thspan">id</span></th>
-                    <th title="תאריך" ><span class="thspan">תאריך</span></th>
-                    <th title="זכות"><span class="thspan">זכות</span></th>
-                    <th title="חובה"><span class="thspan">חובה</span></th>
-                    <th title="דירה"><span class="thspan">דירה</span></th>
-                    <th title="שם"><span class="thspan">שם</span></th>
-                    <th title="קבלה"><span class="thspan">קבלה</span></th>
-                    <th title="עבור"><span class="thspan">עבור</span></th>
-                    <th title="פירוט"><span class="thspan">פירוט</span></th>
-                    <th title="סוג תשלום"><span class="thspan">סוג תשלום</span></th>
-                    <th title="ספק"><span class="thspan">ספק</span></th>
-                    <th title="ספקי שונות"><span class="thspan">ספקי שונות</span></th>
-                    <th title="פירוט ספקי שונות"><span class="thspan">פירוט ספקי שונות</span></th>
-                    <th title="הערות"><span class="thspan">הערות</span></th>
-                    <th title=""><span class="thspan"></span></th>
-                </tr>
+            <tr>
+                <th title="id"><span class="thspan">id</span></th>
+                <th title="תאריך"><span class="thspan">תאריך</span></th>
+                <th title="זכות"><span class="thspan">זכות</span></th>
+                <th title="חובה"><span class="thspan">חובה</span></th>
+                <th title="דירה"><span class="thspan">דירה</span></th>
+                <th title="שם"><span class="thspan">שם</span></th>
+                <th title="קבלה"><span class="thspan">קבלה</span></th>
+                <th title="עבור"><span class="thspan">עבור</span></th>
+                <th title="פירוט"><span class="thspan">פירוט</span></th>
+                <th title="סוג תשלום"><span class="thspan">סוג תשלום</span></th>
+                <th title="ספק"><span class="thspan">ספק</span></th>
+                <th title="ספקי שונות"><span class="thspan">ספקי שונות</span></th>
+                <th title="פירוט ספקי שונות"><span class="thspan">פירוט ספקי שונות</span></th>
+                <th title="הערות"><span class="thspan">הערות</span></th>
+                <th title=""><span class="thspan"></span></th>
+            </tr>
         </thead>
         <tfoot>
-              
+
         </tfoot>
         <tbody>
             <% users.forEach(user => { %>
             <tr>
-                   <td title=<%= user.id%>> <span><%= user.id %></span></td>
-                    <td title=<%= user.date%>> <span> <%= user.date %></span></td>
-                    <td title=<%= user.credit %>><span><%= user.credit %></span></td>
-                    <td title=<%= user.debit %>><span ><%= user.debit %></span></td>
-                    <td title=<%= user.apt %>><span><%= user.apt %></span></td>
-                    <td title=<%= user.name %>><span><%= user.name %></span></td>
-                    <td title=<%= user.receipt %>><span><%= user.receipt %></span></td>
-                    <td title=<%= user.forsomeone %>><span><%= user.forsomeone %></span></td>
-                    <td title=<%= user.details %>><span><%= user.details %></span></td>
-                    <td title=<%= user.paymenttype %>><span><%= user.paymenttype %> </span></td>
-                    <td title=<%= user.provider %>><span><%= user.provider %></span></td>
-                    <td title=<%= user.differentsprovider %>><span><%= user.differentsprovider %> </span></td>
-                    <td title=<%= user.detailsdiferentproviders %>><span><%= user.detailsdiferentproviders %></span></td>
-                    <td title=<%= user.remarks %>><span><%= user.remarks %></span></td> 
-                    <td><span class="badge badge-dark btnnoborder">send <i class="fa fa-paper-plane" aria-hidden="true"></i></span>
-                    <button type="button" class="badge badge-info btnnoborder" data-toggle="modal" data-target=".bd-example-modal-lg">info <i class="fa fa-arrows-alt" aria-hidden="true"></i></button></td>      
+                <td title=<%= user.id%>> <span><%= user.id %></span></td>
+                <td title=<%= user.date%>> <span> <%= user.date %></span></td>
+                <td title=<%= user.credit %>><span><%= user.credit %></span></td>
+                <td title=<%= user.debit %>><span><%= user.debit %></span></td>
+                <td title=<%= user.apt %>><span><%= user.apt %></span></td>
+                <td title=<%= user.name %>><span><%= user.name %></span></td>
+                <td title=<%= user.receipt %>><span><%= user.receipt %></span></td>
+                <td title=<%= user.forsomeone %>><span><%= user.forsomeone %></span></td>
+                <td title=<%= user.details %>><span><%= user.details %></span></td>
+                <td title=<%= user.paymenttype %>><span><%= user.paymenttype %> </span></td>
+                <td title=<%= user.provider %>><span><%= user.provider %></span></td>
+                <td title=<%= user.differentsprovider %>><span><%= user.differentsprovider %> </span></td>
+                <td title=<%= user.detailsdiferentproviders %>><span><%= user.detailsdiferentproviders %></span></td>
+                <td title=<%= user.remarks %>><span><%= user.remarks %></span></td>
+                <td>
+                    <button class="badge badge-dark btnnoborder">send <i class="fa fa-paper-plane"
+                            aria-hidden="true"></i></button>
+                    <button type="button" class="badge badge-info btnnoborder" data-toggle="modal"
+                        data-target=".bd-example-modal-lg">info <i class="fa fa-arrows-alt"
+                            aria-hidden="true"></i></button>
+                </td>
             </tr>
-            
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      ...
-    </div>
-  </div>
-</div>
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        ...
+                    </div>
+                </div>
+            </div>
 
 
-            <% }) %>         
+            <% }) %>
         </tbody>
     </table>
 </div>
