@@ -40,8 +40,28 @@
                     <td title=<%= user.detailsdiferentproviders %>><span><%= user.detailsdiferentproviders %></span></td>
                     <td title=<%= user.remarks %>><span><%= user.remarks %></span></td> 
                     <td><span class="badge badge-dark">send <i class="fa fa-paper-plane" aria-hidden="true"></i></span>
-                        <span class="badge badge-info">info <i class="fa fa-arrows-alt" aria-hidden="true"></i</span></td>      
+                        <span class="badge badge-info infomodal" data-toggle="modal " data-target=".bd-example-modal-lg">info <i class="fa fa-arrows-alt" aria-hidden="true"></i</span></td>      
             </tr>
+            
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+
+<!-- Small modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
             <% }) %>         
         </tbody>
     </table>
