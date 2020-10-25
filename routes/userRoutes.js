@@ -31,7 +31,10 @@ router.get('/', authMethods.data.authenticateToken,function (req, res, next) {
      res.sendStatus(500)
       return
     }
-    dbResult.rows.
+    dbResult.rows.forEach(user => {
+      user.date = new Date(user.date).toISOString();
+    });
+    console.log(dbResult.rows)
     res.render('index',{users:dbResult.rows});
   })
 
