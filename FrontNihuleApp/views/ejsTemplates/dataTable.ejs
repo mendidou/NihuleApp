@@ -25,7 +25,8 @@
             <% users.forEach(user => { %>
             <tr>
                    <td title=<%= user.id%>> <span><%= user.id %></span></td>
-                    <td title=<%= user.date%>> <span><%= user.date %></span></td>
+                    <td title=<%= user.date%>> <span><% console.log(new Date(user.date).toISOString() %> 
+                        <%= user.date %></span></td>
                     <td title=<%= user.credit %>><span><%= user.credit %></span></td>
                     <td title=<%= user.debit %>><span ><%= user.debit %></span></td>
                     <td title=<%= user.apt %>><span><%= user.apt %></span></td>

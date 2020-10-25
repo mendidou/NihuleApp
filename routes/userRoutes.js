@@ -31,6 +31,7 @@ router.get('/', authMethods.data.authenticateToken,function (req, res, next) {
      res.sendStatus(500)
       return
     }
+    dbResult.rows.
     res.render('index',{users:dbResult.rows});
   })
 
