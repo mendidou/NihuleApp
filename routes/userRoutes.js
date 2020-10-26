@@ -169,7 +169,7 @@ else if (req.body.forsomeone) {
 }
 else if (req.body.details) {
   const SQL = "UPDATE "+dailyReportTable +" SET dailyReportTable = $1 WHERE id = $2;"
-  pool.query(SQL, [req.body.dailyReportTable,req.body.id], function (dbError, dbResult) {
+  pool.query(SQL, [req.body.details,req.body.id], function (dbError, dbResult) {
     if (dbError) {
       res.json(dbError.stack)
       return
