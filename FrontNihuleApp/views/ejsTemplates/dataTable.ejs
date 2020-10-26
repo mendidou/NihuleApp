@@ -24,7 +24,18 @@
         </tfoot>
         <tbody>
             <% users.forEach(user => { %>
-            <tr data-id = "<%= user  %> ">
+            <tr  data-date = "<%= user.date  %> "
+                data-credit = "<%= user.credit  %> "
+                data-debit = "<%= user.debit  %> "
+                data-apt = "<%= user.apt  %> "
+                data-name = "<%= user.name  %> "
+                data-receipt = "<%= user.receipt  %> "
+                data-forsomeone = "<%= user.forsomeone  %> "
+                data-details = "<%= user.details  %> "
+                data-paymenttype = "<%= user.paymenttype  %> "
+                data-provider = "<%= user.provider  %> "
+                data-differentsprovider = "<%= user.differentsprovider  %> "
+                data-remarks = "<%= user.remarks  %> " >
                 <td title=<%= user.id%>> <span><%= user.id %></span></td>
                 <td title=<%= user.date%>> <span> <%= user.date %></span></td>
                 <td title=<%= user.credit %>><span><%= user.credit %></span></td>
