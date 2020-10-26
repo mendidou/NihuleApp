@@ -63,26 +63,26 @@
                         <div class="form-row">
                             <div class=" col-md-3">
                                 <label for="recipient-name" class="col-form-label"> date</label>
-                                <input type="text" class="form-control" id="recipient-name"> 
+                                <input type="text" class="form-control" id="recipient-name" value="<%= user.date %>"> 
                             </div>
                             <div class=" col-md-2">
                                 <label for="recipient-name" class="col-form-label">appartement</label>
-                                <input type="text" class="form-control" id="recipient-name"> 
+                                <input type="text" class="form-control" id="recipient-name" value="<%= user.apt %>" > 
                             </div>
                             <div class=" col-md-7">
                                 <label for="recipient-name" class="col-form-label">name</label>
-                                <input type="text" class="form-control" id="recipient-name"> 
+                                <input type="text" class="form-control" id="recipient-name" value="<%= user.name %>" > 
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-3">
                                 <label for="recipient-name" class="col-form-label">provider</label>
-                                <input type="text" class="form-control" id="recipient-name">
+                                <input type="text" class="form-control" id="recipient-name" value="<%= user.provider %>" >
                             </div>
                             <div class="col-md-3">
                                 <label for="recipient-name" class="col-form-label">type of payment</label>
                                 <select class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-                                    <option selected>Choose...</option>
+                                    <option selected><%= user.paymenttype %> </option>
                                     <option value="1">transfer</option>
                                     <option value="2">cash</option>
                                     <option value="3">check</option>
@@ -90,49 +90,44 @@
                             </div>
                             <div class="col-md-2">
                                 <label for="recipient-name" class="col-form-label">credit</label>
-                                <input type="text" class="form-control" id="recipient-name">
+                                <input type="text" class="form-control" id="recipient-name" value="<%= user.credit %>" >
                             </div>
                             <div class="col-md-2">
                                 <label for="recipient-name" class="col-form-label">debit</label>
-                                <input type="text" class="form-control" id="recipient-name">
+                                <input type="text" class="form-control" id="recipient-name" value="<%= user.debit %>" >
                             </div>
                             <div class="col-md-2">
                                 <label for="recipient-name" class="col-form-label">receipt number</label>
-                                <input type="text" class="form-control" id="recipient-name">
+                                <input type="text" class="form-control" id="recipient-name" value="<%= user.receipt %>" >
                             </div>
                       </div>
                          
                     <div class="form-row">
-                        <div class="col-md-3">
-                            <label for="recipient-name" class="col-form-label">receipt number</label>
-                            <input type="text" class="form-control" id="recipient-name">
-                        </div>
+            
                         <div class="col-md-3">
                             <label for="recipient-name" class="col-form-label">different provider</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input type="text" class="form-control" id="recipient-name" value="<%= user.differentsprovider %>">
                         </div>
                         <div class="col-md-3">
                             <label for="recipient-name" class="col-form-label">details about provider</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input type="text" class="form-control" id="recipient-name" value="<%= user.detailsdiferentproviders %>">
                         </div>
                            
                         <div class="col-md-3">
                                 <label for="recipient-name" class="col-form-label">details</label>
-                                <input type="text" class="form-control" id="recipient-name">
+                                <input type="text" class="form-control" id="recipient-name" value="<%= user.details %>">
                          </div>
-                            
-                            
+                         
+                         <div class="col-md-3">
+                            <label for="recipient-name" class="col-form-label">for</label>
+                            <input type="text" class="form-control" id="recipient-name" value="<%= user.for %>">
+                        </div>
                             
                         </div>
-                        <div class="form row">
-                            <div class="col-md-3">
-                                <label for="recipient-name" class="col-form-label">for</label>
-                                <input type="text" class="form-control" id="recipient-name">
-                            </div>
-                        </div>
+                        
                         <div class="form-group">
                           <label for="message-text" class="col-form-label">Message</label>
-                          <textarea class="form-control" id="message-text"></textarea>
+                          <textarea class="form-control" id="message-text" >value="<%= user.remarks %>"</textarea>
                         </div>
                       </form>
                     </div>
