@@ -82,7 +82,7 @@
                             <div class="col-md-3">
                                 <label for="recipient-name" class="col-form-label">type of payment</label>
                                 <select class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-                                    <option selected><%= user.paymenttype %> </option>
+                                    <option selected><%= user.name %> </option>
                                     <option value="1">transfer</option>
                                     <option value="2">cash</option>
                                     <option value="3">check</option>
@@ -120,7 +120,7 @@
                          
                          <div class="col-md-3">
                             <label for="recipient-name" class="col-form-label">for</label>
-                            <input type="text" class="form-control" id="recipient-name" value="<%= user.for user.remarks %>">
+                            <input type="text" class="form-control" id="recipient-name" value="<%= user.for %>">
                         </div>
                             
                         </div>
