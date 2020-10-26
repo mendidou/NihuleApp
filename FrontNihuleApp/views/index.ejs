@@ -440,7 +440,7 @@ $('.openmodal').click(function (e) {
     e.preventDefault();
     var tr = $(this).closest('tr')
 
-    console.log(tr.data)
+    console.log(tr.data('id'))
        // modal = $('#editCategory');
     // make AJAX call passing the ID
   //  $.getJSON('/admin/categories/get-cateory/' + tr.data('id'), function (data) {
