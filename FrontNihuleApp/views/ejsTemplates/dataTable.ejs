@@ -80,8 +80,8 @@
                                 <input type="text" class="form-control date" id="date" value=""> 
                             </div>
                             <div class=" col-md-2">
-                                <label for="appartement" class="col-form-label">appartement</label>
-                                <input type="text" class="form-control apt" id="appartement" value="" > 
+                                <label for="apt" class="col-form-label">appartement</label>
+                                <input type="text" class="form-control apt" id="apt" value="" > 
                             </div>
                             <div class=" col-md-7">
                                 <label for="name" class="col-form-label">name</label>
@@ -94,8 +94,13 @@
                                 <input type="text" class="form-control provider" id="provider" value="" >
                             </div>
                             <div class="col-md-3">
-                                <label for="type-of-payment" class="col-form-label">type of payment</label>
-                                <input type="text" class="form-control paymentype" id="type of payment" value="" >                           
+                                <label for="paymenttype" class="col-form-label">type of payment</label>
+                                <select class="custom-select" id="paymenttype">
+                                    <option selected>Choose...</option>
+                                    <option value="1">transfer</option>
+                                    <option value="2">cash</option>
+                                    <option value="3">check</option>
+                                  </select>                   
                             </div>
                             <div class="col-md-2">
                                 <label for="credit" class="col-form-label">credit</label>
@@ -114,12 +119,12 @@
                     <div class="form-row">
             
                         <div class="col-md-3">
-                            <label for="different-provider" class="col-form-label">different provider</label>
-                            <input type="text" class="form-control differentsprovider" id="different-provider" value="">
+                            <label for="differentsprovider" class="col-form-label">different provider</label>
+                            <input type="text" class="form-control differentsprovider" id="differentsprovider" value="">
                         </div>
                         <div class="col-md-3">
-                            <label for="details-about-provider" class="col-form-label">details about provider</label>
-                            <input type="text" class="form-control detailsdiferentproviders" id="details about provider" value="">
+                            <label for="detailsdiferentproviders" class="col-form-label">details about provider</label>
+                            <input type="text" class="form-control detailsdiferentproviders" id="detailsdiferentproviders" value="">
                         </div>
                            
                         <div class="col-md-3">
