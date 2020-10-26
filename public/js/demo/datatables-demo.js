@@ -136,6 +136,28 @@ function urlEncodedStringToObject(string) {
     result[query[0]] = decodeURIComponent(query[1] || '');
 
   });
-  console.log(result)
   return result
 }
+
+  $('.openmodal').click(function (e) {
+    e.preventDefault();
+    var tr = $(this).closest('tr')
+  
+       modal = $('#showdetailsmodal');
+    
+       $('.date').val(tr.data('date'));
+       $('.credit').val(tr.data('credit'));
+       $('.debit').val(tr.data('debit'));
+       $('.apt').val(tr.data('apt'));
+       $('.name').val(tr.data('name'));
+       $('.receipt').val(tr.data('receipt'));
+       $('.for').val(tr.data('forsomeone'));
+       $('.details').val(tr.data('details'));
+       $('.paymenttype').val(tr.data('paymenttype'));
+       $('.provider').val(tr.data('provider'));
+       $('.differentsprovider').val(tr.data('differentsprovider'));
+       $('.remarks').val(tr.data('remarks'));
+       
+  
+    });
+
