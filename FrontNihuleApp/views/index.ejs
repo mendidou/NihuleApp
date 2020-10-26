@@ -444,7 +444,7 @@ $('.openmodal').click(function (e) {
     console.log(tr.data('forsomeone'))
        modal = $('#showdetailsmodal');
        document.getElementsByClassName('.for').value = tr.data('forsomeone');
-       $('.for').val("GeeksForGeeks"); 
+       $('.for').val(tr.data('forsomeone')); 
     // make AJAX call passing the ID
   //  $.getJSON('/admin/categories/get-cateory/' + tr.data('id'), function (data) {
         // set values in modal
