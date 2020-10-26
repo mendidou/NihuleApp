@@ -81,12 +81,7 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="recipient-name" class="col-form-label">type of payment</label>
-                                <select class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-                                    <option selected><%= user.name %> </option>
-                                    <option value="1">transfer</option>
-                                    <option value="2">cash</option>
-                                    <option value="3">check</option>
-                                  </select>                                
+                                <input type="text" class="form-control" id="recipient-name" value="<%= user.paymenttype %>" >                           
                             </div>
                             <div class="col-md-2">
                                 <label for="recipient-name" class="col-form-label">credit</label>
