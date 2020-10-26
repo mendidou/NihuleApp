@@ -153,9 +153,7 @@ function urlEncodedStringToObject(string) {
        $('.receipt').val(tr.data('receipt'));
        $('.for').val(tr.data('forsomeone'));
        $('.details').val(tr.data('details'));
-       $('.paymenttype').val("tr.data('paymenttype')");
-       console.log((tr.data('paymenttype')))
-
+       $('.paymenttype').prop('selected' ,(tr.data('paymenttype')));
        $('.provider').val(tr.data('provider'));
        $('.detailsdiferentproviders').val(tr.data('detailsdiferentproviders'));
        $('.differentsprovider').val(tr.data('differentsprovider'));
