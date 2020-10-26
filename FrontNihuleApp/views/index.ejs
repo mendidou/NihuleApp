@@ -440,20 +440,24 @@ $('.openmodal').click(function (e) {
     e.preventDefault();
     var tr = $(this).closest('tr')
 
-    console.log(tr.data('date'))
-    console.log(tr.data('forsomeone'))
        modal = $('#showdetailsmodal');
-       document.getElementsByClassName('.for').value = tr.data('forsomeone');
-       $('.for').val(tr.data('forsomeone')); 
-    // make AJAX call passing the ID
-  //  $.getJSON('/admin/categories/get-cateory/' + tr.data('id'), function (data) {
-        // set values in modal
-     //   modal.find('form').attr('action', '/admin/categories/get-cateory/' + tr.data('id') );
-      //  modal.find('[name=title]').val( data.title );
-        // open modal
-       // modal.modal('show');
+    
+       $('.date').val(tr.data('date'));
+       $('.credit').val(tr.data('credit'));
+       $('.debit').val(tr.data('debit'));
+       $('.apt').val(tr.data('apt'));
+       $('.name').val(tr.data('name'));
+       $('.receipt').val(tr.data('receipt'));
+       $('.for').val(tr.data('forsomeone'));
+       $('.details').val(tr.data('details'));
+       $('.paymenttype').val(tr.data('paymenttype'));
+       $('.provider').val(tr.data('provider'));
+       $('.differentsprovider').val(tr.data('differentsprovider'));
+       $('.remarks').val(tr.data('remarks'));
+       
+ 
     });
-
+  
 </script>
 
 </body>
