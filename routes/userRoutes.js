@@ -98,7 +98,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
         const SQL = "UPDATE " + dailyReportTable + " SET "+Myrequest+" = $1 WHERE id = $2;"
         pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
           if (dbError) {
-             message = "an error 501 occured "
+           res.sendStatus(501)
             return
           }
        
@@ -106,7 +106,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
   }
   
   });
-  res.redirect("/" , {message : message})
+  res.redirect("/")
   }
 });
 
