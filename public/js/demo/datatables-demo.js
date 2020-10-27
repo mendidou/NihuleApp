@@ -183,7 +183,6 @@ function urlEncodedStringToObject(string) {
             }
             else {
               alert("this is not a good format please write a number")
-              
             }
           } 
         })
