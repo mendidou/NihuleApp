@@ -92,11 +92,12 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
   }
   else { 
     editReqs.forEach(Myrequest => {
+      var message 
       if (req.body[Myrequest]) {
         const SQL = "UPDATE " + dailyReportTable + " SET "+Myrequest+" = $1 WHERE id = $2;"
         pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
           if (dbError) {
-         res.redirect("login" ,{message:"could not be save because of error 501"})
+            var message = "an error 501 occured "
             return
           }
        
@@ -104,7 +105,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
   }
   
   });
-  res.redirect("/")
+  res.redirect("/" , {message : message})
   }
 });
 
