@@ -143,7 +143,7 @@ function urlEncodedStringToObject(string) {
     var tr = $(this).closest('tr')
   
        modal = $('#showdetailsmodal');
-    
+       $('.id').val(tr.data('id'));
        $('.date').val(tr.data('date'));
        $('.credit').val(tr.data('credit'));
        $('.debit').val(tr.data('debit'));
