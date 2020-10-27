@@ -184,7 +184,7 @@ function urlEncodedStringToObject(string) {
           }
           
         })
-        return validatedate(date)
+        return validatedate(date.trim())
       
     }
 
