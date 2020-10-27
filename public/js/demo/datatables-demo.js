@@ -180,6 +180,9 @@ function urlEncodedStringToObject(string) {
           if (result[name]) {
             if (!isNaN(result[name])) { 
               isnumber=true
+              if(!isnumber){
+                return isnumber
+              }
             }
             else {
               alert("this is not a good format please write a number")
