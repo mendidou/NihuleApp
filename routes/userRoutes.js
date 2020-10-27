@@ -90,7 +90,7 @@ if(req.body.action == "delete"){
 // 'name', 'receipt', 'forsomeone', 'details',
 //  'paymenttype', 'provider', 'differentsprovider',
 // 'detailsdiferentProviders',  'remarks']
-console.log(req.body)
+console.log(req.body["details"])
 if (req.body.date) {
   const SQL = "UPDATE "+dailyReportTable +" SET date = $1 WHERE id = $2;"
   pool.query(SQL, [req.body.date,req.body.id], function (dbError, dbResult) {
