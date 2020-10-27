@@ -163,3 +163,31 @@ function urlEncodedStringToObject(string) {
   
     });
 
+    function val(){
+      var date = document.getElementById("date").value;
+      var debit =document.getElementById("debit").value;
+      var credit = document.getElementById("credit").value;
+      var apt = document.getElementById("apt").value;
+      var receipt =document.getElementById("receipt").value;
+      if (date){
+        return validatedate(date)
+      }
+      else if(debit || credit || apt || receipt){
+        var resultsArr = ["credit", "debit", "apt", "receipt"]
+        var isnumber =false;
+        var result = resultsArr.forEach(name => {
+          if (result[name]) {
+            if (!isNaN(result[name])) { 
+              isnumber=true
+            }
+            else {
+              alert("this is not a good format please write a number")
+            }
+          } 
+        })
+        return isnumber
+      }else {
+        return true
+      }
+    }
+
