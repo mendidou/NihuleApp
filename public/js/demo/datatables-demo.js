@@ -170,7 +170,8 @@ function urlEncodedStringToObject(string) {
       var apt = document.getElementById("apt").value;
       var receipt =document.getElementById("receipt").value;
       if (date){
-        return validatedate(date)
+        console.log(date.trim())
+        return validatedate(date.trim())
       }
       else if(debit || credit || apt || receipt){
         var resultsArr = ["credit", "debit", "apt", "receipt"]
