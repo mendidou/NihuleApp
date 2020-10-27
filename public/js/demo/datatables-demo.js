@@ -173,7 +173,7 @@ function urlEncodedStringToObject(string) {
         console.log(date.trim())
         return validatedate(date.trim())
       }
-      if(debit || credit || apt || receipt){
+     if(debit || credit || apt || receipt){
         var resultsArr = ["credit", "debit", "apt", "receipt"]
         var isnumber =false;
         var result = resultsArr.forEach(name => {
