@@ -169,11 +169,7 @@ function urlEncodedStringToObject(string) {
       var credit = document.getElementById("credit").value;
       var apt = document.getElementById("apt").value;
       var receipt =document.getElementById("receipt").value;
-      if (date){
-        console.log(date.trim())
-        return validatedate(date.trim())
-      }
-      else if(debit || credit || apt || receipt){
+    
         var resultsArr = ["credit", "debit", "apt", "receipt"]
         var isnumber =false;
         var result = resultsArr.forEach(name => {
@@ -181,15 +177,14 @@ function urlEncodedStringToObject(string) {
             if (!isNaN(result[name])) { 
               isnumber=true
             }
-            else {
+            if (!isnumber){
               alert("this is not a good format please write a number")
-            }
-          } 
+              return isnumber
+            } 
+          }
           
         })
-        return isnumber
-      }else {
-        return true
-      }
+        return validatedate(date)
+      
     }
 
