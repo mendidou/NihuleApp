@@ -74,7 +74,7 @@ router.post('/addDailyReport', authMethods.data.authenticateToken, function (req
 
 router.post('/updateDailyReport', authMethods.data.authenticateToken, function (req, res, next) {
   const editReqs = ['date', 'credit', 'debit', 'apt',
-  'name', 'receipt', 'for', 'details',
+  'name', 'receipt', 'forsomeone', 'details',
   'paymenttype', 'provider', 'differentsprovider',
   'detailsdiferentproviders', 'remarks']
   const dailyReportTable = authMethods.data.dailyReportNameTable(req.user.email)
