@@ -101,6 +101,7 @@ router.post('/dailyReport', authMethods.data.authenticateToken, function (req, r
             return
           }
           res.json(dbResult)
+          console.log(2)
           return
         })
   }
