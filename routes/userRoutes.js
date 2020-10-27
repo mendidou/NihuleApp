@@ -86,7 +86,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
         res.json(dbError.stack)
         return
       }
-      res.redirect("/")
+      res.json(dbResult)
       return
     })
   }
@@ -96,15 +96,15 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
         const SQL = "UPDATE " + dailyReportTable + " SET "+Myrequest+" = $1 WHERE id = $2;"
         pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
           if (dbError) {
-           console.log(dbError)
+         res.redirect("login" ,{message:"could not be save because of error 501"})
             return
           }
-         console.log(dbResult)
+       
         })
   }
   
   });
-  res.json("success")
+  res.redirect("/")
   }
 });
 
