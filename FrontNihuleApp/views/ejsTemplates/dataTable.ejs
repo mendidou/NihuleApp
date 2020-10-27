@@ -74,7 +74,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <form>
+                      <form action="http://nihuleapi.herokuapp.com/updateDailyReport" id="updateDailyReport" method="POST">
                         <div class="form-row">
                             <div class=" col-md-3">
                                 <label for="date" class="col-form-label"> date</label>
@@ -148,7 +148,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Send</button>
+                      <button type="button"  value="submit" form="updateDailyReport" class="btn btn-primary">update</button>
                     </div>
                   </div>
                 </div>

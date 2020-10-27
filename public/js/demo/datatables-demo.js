@@ -4,7 +4,7 @@ $(document).ready(function () {
 
   // example.php will be used to send the data to the sever database
   $('#dataTable').Tabledit({
-    url: 'dailyReport',
+    url: 'updateDailyReport',
     editButton: false,
     deleteButton: true,
     hideIdentifier: true,
@@ -47,7 +47,6 @@ $(document).ready(function () {
 
     onAjax: function (action, serialize) {
       var result = urlEncodedStringToObject(serialize)
-console.log(result)
       if (result["date"]) {
         return validatedate(result["date"])
       }
