@@ -86,7 +86,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
         res.json(dbError.stack)
         return
       }
-      res.json(dbResult)
+      res.redirect("/")
       return
     })
   }
