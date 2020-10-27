@@ -96,10 +96,10 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
         const SQL = "UPDATE " + dailyReportTable + " SET "+Myrequest+" = $1 WHERE id = $2;"
         pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
           if (dbError) {
-           // res.json(dbError.stack)
+           console.log(dbError)
             return
           }
-          //res.json(dbResult)
+         console.log(dbResult)
         })
   }
   res.json("success")
