@@ -73,6 +73,11 @@ router.post('/addDailyReport', authMethods.data.authenticateToken, function (req
 });
 
 router.post('/dailyReport', authMethods.data.authenticateToken, function (req, res, next) {
+  const editReqs = ['date', 'credit', 'debit', 'apt',
+  'name', 'receipt', 'forsomeone', 'details',
+  'paymenttype', 'provider', 'differentsprovider',
+  'detailsdiferentProviders', 'remarks']
+
   const dailyReportTable = authMethods.data.dailyReportNameTable(req.user.email)
   if (req.body.action == "delete") {
     const SQL = "DELETE FROM " + dailyReportTable + " WHERE id = $1;"
@@ -86,24 +91,22 @@ router.post('/dailyReport', authMethods.data.authenticateToken, function (req, r
       return
     })
   }
-  else { }
-  const editReqs = ['date', 'credit', 'debit', 'apt',
-    'name', 'receipt', 'forsomeone', 'details',
-    'paymenttype', 'provider', 'differentsprovider',
-    'detailsdiferentProviders', 'remarks']
-  editReqs.forEach(Myrequest => {
-    if (req.body[Myrequest]) {
-      const SQL = "UPDATE " + dailyReportTable + " SET date = $1 WHERE id = $2;"
-      pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
-        if (dbError) {
-          res.json(dbError.stack)
+  else { 
+    editReqs.forEach(Myrequest => {
+      if (req.body[Myrequest]) {
+        const SQL = "UPDATE " + dailyReportTable + " SET date = $1 WHERE id = $2;"
+        pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
+          if (dbError) {
+            res.json(dbError.stack)
+            return
+          }
+          res.json(dbResult)
           return
-        }
-        res.json(dbResult)
-        return
-      })
-}
-});
+        })
+  }
+  });
+  }
+ 
 
 
 // if (req.body.date) {
@@ -252,7 +255,7 @@ router.post('/dailyReport', authMethods.data.authenticateToken, function (req, r
 
 
 
+});
 
 module.exports = router;
 
-});
