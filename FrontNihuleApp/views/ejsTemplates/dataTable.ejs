@@ -24,7 +24,9 @@
         </tfoot>
         <tbody>
             <% users.forEach(user => { %>
-            <tr  data-date = "<%= user.date  %> "
+            <tr  
+            data-id="<%= user.id%>"
+            data-date = "<%= user.date  %> "
                 data-credit = "<%= user.credit  %> "
                 data-debit = "<%= user.debit  %> "
                 data-apt = "<%= user.apt  %> "
