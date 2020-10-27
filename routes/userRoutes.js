@@ -96,13 +96,13 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
         const SQL = "UPDATE " + dailyReportTable + " SET "+Myrequest+" = $1 WHERE id = $2;"
         pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
           if (dbError) {
-            res.json(dbError.stack)
+           // res.json(dbError.stack)
             return
           }
-          res.json(dbResult)
-          return
+          //res.json(dbResult)
         })
   }
+  res.json("success")
   });
   }
 });
