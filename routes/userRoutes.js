@@ -102,8 +102,9 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
          console.log(dbResult)
         })
   }
-  res.json("success")
+  
   });
+  res.json("success")
   }
 });
 
