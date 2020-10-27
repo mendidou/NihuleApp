@@ -91,7 +91,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
     })
   }
   else { 
-    var message ="" 
+    var message ="hello" 
     editReqs.forEach(Myrequest => {
     
       if (req.body[Myrequest]) {
