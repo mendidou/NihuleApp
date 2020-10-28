@@ -191,6 +191,7 @@ function urlEncodedStringToObject(string) {
               isValidNumber=true
               console.log(isValidNumber)
             }
+            console.log(isValidNumber)
              if(!isValidNumber){
               console.log(isValidNumber)
               alert("this is not a good format please write a number");
