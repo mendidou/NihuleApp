@@ -21,6 +21,7 @@ const pool = new Pool({
 
 /* GET home page. */
 router.get('/', authMethods.data.authenticateToken, function (req, res, next) {
+   var message = req.param.message
   if (!req.user.email) {
     res.render('login', { message: "please login again" });
   }
@@ -34,7 +35,7 @@ router.get('/', authMethods.data.authenticateToken, function (req, res, next) {
     dbResult.rows.forEach(user => {
       user.date = new Date(user.date).toLocaleDateString('pt-PT');
     });
-    res.render('index', { users: dbResult.rows });
+    res.render('index', { users: dbResult.rows , message:message });
   })
 
 });
@@ -103,7 +104,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
       }
     });
     if (err) {
-      res.render("index" ,{message:err})
+      res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
     }
     else{
       res.redirect("/")
