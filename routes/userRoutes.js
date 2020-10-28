@@ -2,8 +2,10 @@
 require('dotenv').config({ path: `routes/.env` });
 const router = require('./authentificationRoutes');
 const authMethods = require('./routeMethods/authMethods');
+var async = require('async');
 const { Pool } = require('pg');
 const express = require('express');
+
 
 
 const app = express()
