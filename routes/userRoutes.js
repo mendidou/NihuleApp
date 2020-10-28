@@ -106,7 +106,9 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
       res.render(err)
       return
     }
-    res.redirect("/")
+    else{
+      res.redirect("/")
+    }
   }
 });
 
