@@ -178,13 +178,14 @@ function urlEncodedStringToObject(string) {
       if (date){
         isDateValid = validatedate(date.trim())
       }
+      else {
+        $('.date').val("00/00/0000")
+      }
       if (!isDateValid){
         return isDateValid
       }
       // if date is empty fill the date by an empty string
-      else {
-        $('.date').val(" ")
-      }
+     
 
       if (debit){
         if(isNaN(debit)){
@@ -209,7 +210,7 @@ function urlEncodedStringToObject(string) {
           alert( debit +"is not a valide format please whrite a number")
           return isNumberValide = false
         }
-        
+
       }
       return isNumberValide && isDateValid
     }
