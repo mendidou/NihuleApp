@@ -104,7 +104,6 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
             pool.query(SQL, [req.body[editReqs[i]], req.body.id], function (dbError, dbResult) {
               if (dbError) {
                 err = true
-               res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
                 return
               }    
             })
@@ -116,6 +115,9 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
        function(callback){
          if(err === false){
           res.redirect("/")
+         }
+         else{
+          res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
          }
          callback()
        }
