@@ -102,7 +102,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
         })
       }
     });
-    if (!err==null) {
+    if (err) {
       res.render(err)
       return
     }
