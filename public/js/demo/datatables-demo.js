@@ -170,6 +170,7 @@ function urlEncodedStringToObject(string) {
       var apt = document.getElementById("apt").value;
       var receipt =document.getElementById("receipt").value;
       var isDateValid = true
+      var isNumberValide = true
     //if date is not empty
       if (date){
         isDateValid = validatedate(date.trim())
@@ -181,28 +182,31 @@ function urlEncodedStringToObject(string) {
       else {
         $('.date').val(" ")
       }
-      // if one of those are not empty 
-     if(debit || credit || apt || receipt){
-        var resultsArr = ["credit", "debit", "apt", "receipt"]
-        var isValidNumber =false;
-        var result = resultsArr.forEach(name => {
-          if (result[name]) {
-            if (!isNaN(result[name])) { 
-              isValidNumber=true
-              console.log(isValidNumber)
-            }
-            console.log(isValidNumber)
-             if(!isValidNumber){
-              console.log(isValidNumber)
-              alert("this is not a good format please write a number");
-              return isValidNumber && isDateValid
-            }
-          }else {
-            return isDateValid
-          } 
-        })
-      }else {
-        return isDateValid
+
+      if (debit){
+        if(!isNaN(debit)){
+          alert( debit +"is not a valide format please whrite a number")
+          return isNumberValide =false
+        }
       }
+      if (credit){
+        if(!isNaN(credit)){
+          alert( debit +"is not a valide format please whrite a number")
+          return isNumberValide = false
+        }
+      }
+      if (apt){
+        if(!isNaN(apt)){
+          alert( debit +"is not a valide format please whrite a number")
+          return isNumberValide = false
+        }
+      }
+      if (receipt){
+        if(!isNaN(receipt)){
+          alert( debit +"is not a valide format please whrite a number")
+          return isNumberValide = false
+        }
+      }
+      return isNumberValide && isDateValid
     }
 
