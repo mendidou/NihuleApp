@@ -96,7 +96,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
   else {
     var err = false
     async.series([
-      function(){
+      function(callback){
         for (let i = 0; i < editReqs.length; i++) {
           if (req.body[editReqs[i]]) {
            
@@ -109,12 +109,15 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
               }    
             })
           }
+          
         }
+        callback()
        } ,
-       function(){
+       function(callback){
          if(err === false){
           res.redirect("/")
          }
+         callback()
        }
      
     ],function(err) { //This function gets called after the two tasks have called their "task callbacks"
