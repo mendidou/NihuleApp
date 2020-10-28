@@ -92,25 +92,18 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
     })
   }
   else {
-    editReqs.forEach(Myrequest => {
-      if (req.body[Myrequest]) {
-        const SQL = "UPDATE " + dailyReportTable + " SET " + Myrequest + " = $1 WHERE id = $2;"
-        pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
-          if (dbError) {
-            err = dbError
-            console.log(err + "cacacacacac")
-          }
-        })
-      }
-    });
-    console.log(Object.entries(err).length)
-    if (!Object.entries(err).length === 0) {
-      console.log(err)
-      res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
-    }
-    else{
-
+    try {
+      editReqs.forEach(Myrequest => {
+        if (req.body[Myrequest]) {
+          const SQL = "UPDATE " + dailyReportTable + " SET " + Myrequest + " = $1 WHERE id = $2;"
+          pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
+            if (dbError) throw BreakException   
+          })
+        }
+      });
       res.redirect("/")
+    }catch{
+      res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
     }
   }
 });
