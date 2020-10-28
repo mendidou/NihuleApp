@@ -97,12 +97,12 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
         if (req.body[Myrequest]) {
           const SQL = "UPDATE " + dailyReportTable + " SET " + Myrequest + " = $1 WHERE id = $2;"
           pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
-            if (dbError) throw new Error("")   
+            if (dbError) throw "a server error occured"  
           })
         }
       });
       res.redirect("/")
-    }catch{
+    }catch(e){
       res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
     }
   }
