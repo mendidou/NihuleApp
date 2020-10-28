@@ -99,7 +99,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
           pool.query(SQL, [req.body[editReqs[i]], req.body.id], function (dbError, dbResult) {
             if (dbError) {
               err =true
-              console.log( 1 +err)
+              console.log( "eeeeeeeeeeeooo")
               return
             } 
           })
