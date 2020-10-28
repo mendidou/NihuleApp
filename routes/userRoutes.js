@@ -77,6 +77,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
     'name', 'receipt', 'forsomeone', 'details',
     'paymenttype', 'provider', 'differentsprovider',
     'detailsdiferentproviders', 'remarks']
+    var err
   const dailyReportTable = authMethods.data.dailyReportNameTable(req.user.email)
   if (req.body.action == "delete") {
     const SQL = "DELETE FROM " + dailyReportTable + " WHERE id = $1;"
@@ -92,7 +93,6 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
   }
   else {
     editReqs.forEach(Myrequest => {
-      var err = null;
       if (req.body[Myrequest]) {
         const SQL = "UPDATE " + dailyReportTable + " SET " + Myrequest + " = $1 WHERE id = $2;"
         pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
@@ -102,7 +102,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
         })
       }
     });
-    if (!err ==null) {
+    if (!err==null) {
       res.render(err)
       return
     }
