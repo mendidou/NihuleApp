@@ -95,19 +95,18 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken,  async fun
     var ideux
     var err = false
       for (let i = 0; i < editReqs.length; i++) {
-        ideux = 1
         if (req.body[editReqs[i]]) {
          
           const SQL = "UPDATE " + dailyReportTable + " SET " + editReqs[i] + " = $1 WHERE id = $2;"
-         var query = await pool.query(SQL, [req.body[editReqs[i]], req.body.id], function (dbError, dbResult) {
+          pool.query(SQL, [req.body[editReqs[i]], req.body.id], function (dbError, dbResult) {
             console.log(editReqs.length)
             console.log(i)
             if (dbError) {
-              res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
+             res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
               // err = true
               // console.log( "eeeeeeeeeeeooo")
               return
-            } if (editReqs.length === 15){
+            } if (editReqs.length === i-1){
               res.redirect("/")
               return
             }
