@@ -179,7 +179,8 @@ function urlEncodedStringToObject(string) {
         isDateValid = validatedate(date.trim())
       }
       else {
-        $('.date').val("00/00/0000")
+        alert("date can't be empty")
+      return !isDateValid
       }
       if (!isDateValid){
         return isDateValid
