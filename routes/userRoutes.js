@@ -103,8 +103,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
       }
     });
     if (err) {
-      console.log("error")
-      res.render(err)
+      res.render("/" ,{message:err})
     }
     else{
       res.redirect("/")
