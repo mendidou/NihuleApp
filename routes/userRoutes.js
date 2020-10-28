@@ -92,8 +92,10 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
     })
   }
   else {
+    var ideux
     var err = false
       for (let i = 0; i < editReqs.length; i++) {
+        ideux = 1
         if (req.body[editReqs[i]]) {
          
           const SQL = "UPDATE " + dailyReportTable + " SET " + editReqs[i] + " = $1 WHERE id = $2;"
@@ -105,7 +107,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
               // err = true
               // console.log( "eeeeeeeeeeeooo")
               return
-            } if (editReqs.length ===  i-1){
+            } if (editReqs.length === 15){
               res.redirect("/")
               return
             }
