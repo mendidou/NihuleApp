@@ -118,7 +118,12 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
          }
        }
      
-    ])
+    ],function(err) { //This function gets called after the two tasks have called their "task callbacks"
+    if (err) return next(err);
+    //Here locals will be populated with `user` and `posts`
+    //Just like in the previous example
+    res.render('user-profile', locals);
+})
     
       
         
