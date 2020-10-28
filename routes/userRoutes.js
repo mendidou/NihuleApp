@@ -72,7 +72,7 @@ router.post('/addDailyReport', authMethods.data.authenticateToken,  async functi
   })
 });
 
-router.post('/updateDailyReport', authMethods.data.authenticateToken,  async function (req, res, next) {
+router.post('/updateDailyReport', authMethods.data.authenticateToken, function (req, res, next) {
   const editReqs = ['date', 'credit', 'debit', 'apt',
     'name', 'receipt', 'forsomeone', 'details',
     'paymenttype', 'provider', 'differentsprovider',
