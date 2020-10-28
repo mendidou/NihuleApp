@@ -57,7 +57,7 @@ router.get('/users', authMethods.data.authenticateToken, function (req, res, nex
   })
 });
 
-router.post('/addDailyReport', authMethods.data.authenticateToken, function (req, res, next) {
+router.post('/addDailyReport', authMethods.data.authenticateToken,  async function (req, res, next) {
   console.log(req.user.email)
   const dailyReportTable = authMethods.data.dailyReportNameTable(req.user.email)
 
@@ -98,16 +98,16 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
           const SQL = "UPDATE " + dailyReportTable + " SET " + editReqs[i] + " = $1 WHERE id = $2;"
           pool.query(SQL, [req.body[editReqs[i]], req.body.id], function (dbError, dbResult) {
             if (dbError) {
-              err =true
+              err = true
               console.log( "eeeeeeeeeeeooo")
               return
             } 
           })
         }
       }
-      console.log(err)
+      
       if(err){
-
+        console.log(err)
         res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
       }else{
         res.redirect("/")
