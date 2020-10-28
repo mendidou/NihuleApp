@@ -77,7 +77,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
     'name', 'receipt', 'forsomeone', 'details',
     'paymenttype', 'provider', 'differentsprovider',
     'detailsdiferentproviders', 'remarks']
-    var err = {}
+    var err = false
   const dailyReportTable = authMethods.data.dailyReportNameTable(req.user.email)
   if (req.body.action == "delete") {
     const SQL = "DELETE FROM " + dailyReportTable + " WHERE id = $1;"
@@ -97,14 +97,18 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
           const SQL = "UPDATE " + dailyReportTable + " SET " + editReqs[i] + " = $1 WHERE id = $2;"
           pool.query(SQL, [req.body[editReqs[i]], req.body.id], function (dbError, dbResult) {
             if (dbError) {
-              console.log("hi")
-//res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
+              err =true
               return
             } 
           })
         }
       }
-      res.redirect("/")
+      if(err){
+        res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
+      }else{
+        es.redirect("/")
+      }
+      r
   }
 });
 
