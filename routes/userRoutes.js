@@ -34,7 +34,6 @@ router.get('/', authMethods.data.authenticateToken, function (req, res, next) {
     dbResult.rows.forEach(user => {
       user.date = new Date(user.date).toLocaleDateString('pt-PT');
     });
-    console.log(dbResult.rows)
     res.render('index', { users: dbResult.rows });
   })
 
@@ -77,7 +76,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
     'name', 'receipt', 'forsomeone', 'details',
     'paymenttype', 'provider', 'differentsprovider',
     'detailsdiferentproviders', 'remarks']
-    var err
+    var err = {}
   const dailyReportTable = authMethods.data.dailyReportNameTable(req.user.email)
   if (req.body.action == "delete") {
     const SQL = "DELETE FROM " + dailyReportTable + " WHERE id = $1;"
