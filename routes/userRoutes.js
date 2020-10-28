@@ -98,11 +98,13 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
           pool.query(SQL, [req.body[editReqs[i]], req.body.id], function (dbError, dbResult) {
             if (dbError) {
               err =true
+              console.log(err)
               return
             } 
           })
         }
       }
+      console.log(err)
       if(err){
         res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
       }else{
