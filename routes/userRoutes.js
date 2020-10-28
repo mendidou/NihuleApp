@@ -104,6 +104,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
     });
     if (err) {
       res.render(err)
+      console.log("error")
       return
     }
     else{
