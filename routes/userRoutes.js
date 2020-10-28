@@ -92,7 +92,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
   }
   else {
     editReqs.forEach(Myrequest => {
-      var err
+      var err = null;
       if (req.body[Myrequest]) {
         const SQL = "UPDATE " + dailyReportTable + " SET " + Myrequest + " = $1 WHERE id = $2;"
         pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
@@ -102,7 +102,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
         })
       }
     });
-    if (err) {
+    if (!err ==null) {
       res.render(err)
       return
     }
