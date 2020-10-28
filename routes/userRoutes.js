@@ -98,14 +98,14 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
         pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
           if (dbError) {
             err = dbError
+            console.log(err)
           }
         })
       }
     });
     if (err) {
-      res.render(err)
       console.log("error")
-      return
+      res.render(err)
     }
     else{
       res.redirect("/")
