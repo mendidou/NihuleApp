@@ -119,6 +119,8 @@ function validatedate(inputText) {
         return false;
       }
     }
+  } else if(inputText.trim.isEmpty()){
+    return true
   }
   else {
     alert("Invalid date format!");
@@ -172,6 +174,7 @@ function urlEncodedStringToObject(string) {
       var isDateValid = true
       var isNumberValide = true
     //if date is not empty
+
       if (date){
         isDateValid = validatedate(date.trim())
       }
@@ -184,25 +187,25 @@ function urlEncodedStringToObject(string) {
       }
 
       if (debit){
-        if(!isNaN(debit)){
+        if(isNaN(debit)){
           alert( debit +"is not a valide format please whrite a number")
           return isNumberValide =false
         }
       }
       if (credit){
-        if(!isNaN(credit)){
+        if(isNaN(credit)){
           alert( debit +"is not a valide format please whrite a number")
           return isNumberValide = false
         }
       }
       if (apt){
-        if(!isNaN(apt)){
+        if(isNaN(apt)){
           alert( debit +"is not a valide format please whrite a number")
           return isNumberValide = false
         }
       }
       if (receipt){
-        if(!isNaN(receipt)){
+        if(isNaN(receipt)){
           alert( debit +"is not a valide format please whrite a number")
           return isNumberValide = false
         }
