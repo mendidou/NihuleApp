@@ -72,7 +72,7 @@ router.post('/addDailyReport', authMethods.data.authenticateToken,  async functi
   })
 });
 
-router.post('/updateDailyReport', authMethods.data.authenticateToken, function (req, res, next) {
+router.post('/updateDailyReport', authMethods.data.authenticateToken,  async function (req, res, next) {
   const editReqs = ['date', 'credit', 'debit', 'apt',
     'name', 'receipt', 'forsomeone', 'details',
     'paymenttype', 'provider', 'differentsprovider',
@@ -99,7 +99,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
         if (req.body[editReqs[i]]) {
          
           const SQL = "UPDATE " + dailyReportTable + " SET " + editReqs[i] + " = $1 WHERE id = $2;"
-          pool.query(SQL, [req.body[editReqs[i]], req.body.id], function (dbError, dbResult) {
+         var query = await pool.query(SQL, [req.body[editReqs[i]], req.body.id], function (dbError, dbResult) {
             console.log(editReqs.length)
             console.log(i)
             if (dbError) {
