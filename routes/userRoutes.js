@@ -97,7 +97,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
         if (req.body[Myrequest]) {
           const SQL = "UPDATE " + dailyReportTable + " SET " + Myrequest + " = $1 WHERE id = $2;"
           pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
-            if (dbError) throw BreakException   
+            if (dbError) throw new Error("")   
           })
         }
       });
