@@ -94,6 +94,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
   else {
       for (let i = 0; i < editReqs.length; i++) {
         if (req.body[editReqs[i]]) {
+          editReqs[i]
           const SQL = "UPDATE " + dailyReportTable + " SET " + editReqs[i] + " = $1 WHERE id = $2;"
           pool.query(SQL, [req.body[editReqs[i]], req.body.id], function (dbError, dbResult) {
             if (dbError) {
