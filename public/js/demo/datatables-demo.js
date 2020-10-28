@@ -169,29 +169,36 @@ function urlEncodedStringToObject(string) {
       var credit = document.getElementById("credit").value;
       var apt = document.getElementById("apt").value;
       var receipt =document.getElementById("receipt").value;
+      var isDateValid = true
+    //if date is not empty
       if (date){
-        console.log(date.trim())
-        return validatedate(date.trim())
+        isDateValid = validatedate(date.trim())
       }
+      // if date is empty fill the date by an empty string
+      else {
+        $('.date').val(" ")
+      }
+      // if one of those are not empty 
      if(debit || credit || apt || receipt){
         var resultsArr = ["credit", "debit", "apt", "receipt"]
-        var isnumber =false;
+        var isValidNumber =false;
         var result = resultsArr.forEach(name => {
           if (result[name]) {
             if (!isNaN(result[name])) { 
-              isnumber=true
-              if(!isnumber){
-                return isnumber
-              }
+              isValidNumber=true
+              console.log(isValidNumber)
             }
-            else {
-              alert("this is not a good format please write a number")
+             if(!isValidNumber){
+              console.log(isValidNumber)
+              alert("this is not a good format please write a number");
+              return isValidNumber && isDateValid
             }
+          }else {
+            return isDateValid
           } 
         })
-        return isnumber
       }else {
-        return true
+        return isDateValid
       }
     }
 

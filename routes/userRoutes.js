@@ -74,9 +74,9 @@ router.post('/addDailyReport', authMethods.data.authenticateToken, function (req
 
 router.post('/updateDailyReport', authMethods.data.authenticateToken, function (req, res, next) {
   const editReqs = ['date', 'credit', 'debit', 'apt',
-  'name', 'receipt', 'forsomeone', 'details',
-  'paymenttype', 'provider', 'differentsprovider',
-  'detailsdiferentproviders', 'remarks']
+    'name', 'receipt', 'forsomeone', 'details',
+    'paymenttype', 'provider', 'differentsprovider',
+    'detailsdiferentproviders', 'remarks']
   const dailyReportTable = authMethods.data.dailyReportNameTable(req.user.email)
   if (req.body.action == "delete") {
     const SQL = "DELETE FROM " + dailyReportTable + " WHERE id = $1;"
@@ -90,23 +90,23 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
       return
     })
   }
-  else { 
-    var message ="hello" 
+  else {
     editReqs.forEach(Myrequest => {
-    
+      var err
       if (req.body[Myrequest]) {
-        const SQL = "UPDATE " + dailyReportTable + " SET "+Myrequest+" = $1 WHERE id = $2;"
+        const SQL = "UPDATE " + dailyReportTable + " SET " + Myrequest + " = $1 WHERE id = $2;"
         pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
           if (dbError) {
-          
-            return
+            err = dbError
           }
-       
         })
-  }
-  
-  });
-  res.redirect("/")
+      }
+    });
+    if (err) {
+      res.render(err)
+      return
+    }
+    res.redirect("/")
   }
 });
 
