@@ -209,6 +209,7 @@ function urlEncodedStringToObject(string) {
           alert( debit +"is not a valide format please whrite a number")
           return isNumberValide = false
         }
+        
       }
       return isNumberValide && isDateValid
     }
