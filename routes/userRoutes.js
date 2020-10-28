@@ -106,9 +106,9 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
       if(err){
         res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
       }else{
-        es.redirect("/")
+        res.redirect("/")
       }
-      r
+      
   }
 });
 
