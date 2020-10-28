@@ -77,7 +77,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
     'name', 'receipt', 'forsomeone', 'details',
     'paymenttype', 'provider', 'differentsprovider',
     'detailsdiferentproviders', 'remarks']
-    var err = false
+   
   const dailyReportTable = authMethods.data.dailyReportNameTable(req.user.email)
   if (req.body.action == "delete") {
     const SQL = "DELETE FROM " + dailyReportTable + " WHERE id = $1;"
@@ -92,6 +92,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
     })
   }
   else {
+    var err = false
       for (let i = 0; i < editReqs.length; i++) {
         if (req.body[editReqs[i]]) {
           console.log(editReqs[i])
