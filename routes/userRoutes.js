@@ -72,7 +72,7 @@ router.post('/addDailyReport', authMethods.data.authenticateToken,  async functi
   })
 });
 
-router.post('/updateDailyReport', authMethods.data.authenticateToken, async function (req, res, next) {
+router.post('/updateDailyReport', authMethods.data.authenticateToken, function (req, res, next) {
   const editReqs = ['date', 'credit', 'debit', 'apt',
     'name', 'receipt', 'forsomeone', 'details',
     'paymenttype', 'provider', 'differentsprovider',
@@ -95,24 +95,25 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, async func
     var err = false
       for (let i = 0; i < editReqs.length; i++) {
         if (req.body[editReqs[i]]) {
-          console.log(editReqs[i])
+         
           const SQL = "UPDATE " + dailyReportTable + " SET " + editReqs[i] + " = $1 WHERE id = $2;"
-         var resultQ = await pool.query(SQL, [req.body[editReqs[i]], req.body.id], function (dbError, dbResult) {
+          pool.query(SQL, [req.body[editReqs[i]], req.body.id], function (dbError, dbResult) {
+            console.log(editReqs.length)
+            console.log(i)
             if (dbError) {
-              err = true
-              console.log( "eeeeeeeeeeeooo")
+              res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
+              // err = true
+              // console.log( "eeeeeeeeeeeooo")
               return
-            } 
+            } if (editReqs.length ===  i-1){
+              res.redirect("/")
+              return
+            }
           })
         }
       }
+        
       
-      if(err){
-        console.log(err)
-        res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
-      }else{
-        res.redirect("/")
-      }
       
   }
 });
