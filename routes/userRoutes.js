@@ -92,19 +92,18 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
     })
   }
   else {
-    try {
-      editReqs.forEach(Myrequest => {
-        if (req.body[Myrequest]) {
-          const SQL = "UPDATE " + dailyReportTable + " SET " + Myrequest + " = $1 WHERE id = $2;"
-          pool.query(SQL, [req.body[Myrequest], req.body.id], function (dbError, dbResult) {
-            if (dbError) throw "a server error occured"  
+      for (let i = 0; i < editReqs.length; i++) {
+        if (req.body[editReqs[i]]) {
+          const SQL = "UPDATE " + dailyReportTable + " SET " + editReqs[i] + " = $1 WHERE id = $2;"
+          pool.query(SQL, [req.body[editReqs[i]], req.body.id], function (dbError, dbResult) {
+            if (dbError) {
+              res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
+              return
+            } 
           })
         }
-      });
+      }
       res.redirect("/")
-    }catch(e){
-      res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
-    }
   }
 });
 
