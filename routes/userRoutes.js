@@ -103,7 +103,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
         })
       }
     });
-    if (!Object.keys(err).length == 0) {
+    if (!Object.entries(err).length === 0) {
       console.log(err)
       res.redirect("http://nihuleapi.herokuapp.com/?message=an%20error%20occured%20please%20try%20again")
     }
