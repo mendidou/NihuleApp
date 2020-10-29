@@ -119,9 +119,7 @@ function validatedate(inputText) {
         return false;
       }
     }
-  } else if(inputText.trim.isEmpty()){
-    return true
-  }
+  } 
   else {
     alert("Invalid date format!");
     return false;
