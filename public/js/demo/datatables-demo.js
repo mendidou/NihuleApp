@@ -194,7 +194,7 @@ function urlEncodedStringToObject(string) {
       if (credit){
         var cred = isNaN(credit)
         if(cred){
-          alert( debit +"is not a valide format please whrite a number")
+          alert( credit +"is not a valide format please whrite a number")
           return isNumberValide = false
         }
       }
@@ -203,14 +203,14 @@ function urlEncodedStringToObject(string) {
       if (apt){
         var apart = isNaN(apt)
         if(apart){
-          alert( debit +"is not a valide format please whrite a number")
+          alert( apt +"is not a valide format please whrite a number")
           return isNumberValide = false
         }
       }
       if (receipt){
       var  recpt = isNaN(receipt)
         if(recpt){
-          alert( debit +"is not a valide format please whrite a number")
+          alert( receipt +"is not a valide format please whrite a number")
           return isNumberValide = false
         }
 
