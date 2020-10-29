@@ -183,12 +183,9 @@ function urlEncodedStringToObject(string) {
       if (isDateValid === false){
         return isDateValid
       }
-      // if date is empty fill the date by an empty string
-     
 
       if (debit){
-        console.log(isNan(debit))
-        if(!isNaN(debit)){
+        if(isNaN(debit)){
           alert( debit +"is not a valide format please whrite a number")
           return false
         }
