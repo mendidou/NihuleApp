@@ -216,6 +216,6 @@ function urlEncodedStringToObject(string) {
         }
 
       }
-      return isNumberValide && isDateValid
+   
     }
 
