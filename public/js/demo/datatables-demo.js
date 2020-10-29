@@ -180,9 +180,9 @@ function urlEncodedStringToObject(string) {
       }
       else {
         alert("date can't be empty")
-      return !isDateValid
+      return false
       }
-      if (!isDateValid){
+      if (isDateValid === false){
         return isDateValid
       }
       // if date is empty fill the date by an empty string
