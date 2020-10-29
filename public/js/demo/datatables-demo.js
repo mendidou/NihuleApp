@@ -202,6 +202,7 @@ function urlEncodedStringToObject(string) {
         }
       }
 
+      
       if (apt){
         if(isNaN(apt)){
           alert( debit +"is not a valide format please whrite a number")
