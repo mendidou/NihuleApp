@@ -127,7 +127,7 @@ router.post('/updateDailyReport', authMethods.data.authenticateToken, function (
     if (err) return next(err);
     //Here locals will be populated with `user` and `posts`
     //Just like in the previous example
-    res.render('user-profile', locals);
+    //res.render('user-profile', locals);
 })
     
       
