@@ -189,6 +189,7 @@ function urlEncodedStringToObject(string) {
      
 
       if (debit){
+        console.log(inNan(debit))
         if(isNaN(debit)){
           alert( debit +"is not a valide format please whrite a number")
           return isNumberValide =false
@@ -200,7 +201,7 @@ function urlEncodedStringToObject(string) {
           return isNumberValide = false
         }
       }
-      
+
       if (apt){
         if(isNaN(apt)){
           alert( debit +"is not a valide format please whrite a number")
