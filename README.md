@@ -7,12 +7,12 @@ This an web app that will help חברות ניהול to manage their business
 
 Thechnologies used :
 HEROKU
-Back end : nodeJs Express , postgressSQL.
-Authentification : Using JWT & http Cookies
-pdf Generator : Puppeteer
 
-Front end:
-Javascript-bootstrap-JQUERY
+-Back end : nodeJs Express , postgressSQL.
+-Authentification : Using JWT & http Cookies
+-pdf Generator : Puppeteer
+
+-Front end:Javascript-bootstrap-JQUERY
 
 For testing please contact me i will provide the test logs : maouizerat@gmail.com
 
