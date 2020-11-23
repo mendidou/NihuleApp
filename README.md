@@ -15,10 +15,16 @@ HEROKU
 - Front end:Javascript-bootstrap-JQUERY
 
 For testing please contact me i will provide the test logs : maouizerat@gmail.com
+login Page :
 ![Capture d’écran 2020-11-23 à 22 17 40](https://user-images.githubusercontent.com/59651816/100011875-0df24100-2ddb-11eb-96c0-c0a9072666aa.png)
 
+dasboard with :(עובר ושב)
 ![Capture d’écran 2020-11-23 à 22 15 45](https://user-images.githubusercontent.com/59651816/100011981-3bd78580-2ddb-11eb-89ab-c81925e96c03.png)
+
+adding a new report and uptdating new report :
 ![Capture d’écran 2020-11-23 à 22 16 33](https://user-images.githubusercontent.com/59651816/100011938-24000180-2ddb-11eb-8d3f-b4c549f07b1c.png)
+
+generated receipt :
 ![Capture d’écran 2020-11-23 à 22 19 40](https://user-images.githubusercontent.com/59651816/100012009-44c85700-2ddb-11eb-90b0-475c1422cd9d.png)
 
 
